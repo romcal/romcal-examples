@@ -3,7 +3,7 @@
 From this project dir (`rest-api-with-express`):
 
 ```shell
-cd examples/rest-api-with-express
+cd rest-api-with-express
 
 npm install
 npm start

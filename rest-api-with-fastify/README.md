@@ -3,7 +3,7 @@
 From this project dir (`rest-api-with-fastify`):
 
 ```shell
-cd examples/rest-api-with-fastify
+cd rest-api-with-fastify
 
 npm install
 npm start

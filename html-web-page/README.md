@@ -3,7 +3,7 @@
 From this project dir (`html-web-page`):
 
 ```shell
-cd examples/html-web-page
+cd html-web-page
 
 npm install
 npm start
