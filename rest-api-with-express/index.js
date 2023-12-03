@@ -1,5 +1,5 @@
 const express = require('express');
-const Romcal = require('romcal');
+const { Romcal } = require('romcal');
 const { France_Fr } = require('@romcal/calendar.france');
 
 /**
@@ -18,8 +18,6 @@ app.get('/', (req, res) => {
 /**
  * Example that output data of the General Roman calendar, and all its defined locales.
  * The year is optional (taking the current year by default).
- *
- * this doesn't actually work due to the
  */
 app.get('/romcal/general-roman/:locale/:year?', async (req, res) => {
   const locale = req.params['locale'].toLowerCase();
