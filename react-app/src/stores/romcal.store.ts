@@ -1,6 +1,6 @@
 import { addMonths, subMonths } from 'date-fns';
 import { makeAutoObservable, runInAction } from 'mobx';
-import Romcal, { BaseLiturgicalDay } from 'romcal';
+import { Romcal, BaseLiturgicalDay } from 'romcal';
 import { CALENDARS } from '../constants/calendars';
 
 export class RomcalStore {

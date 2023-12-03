@@ -1,7 +1,7 @@
 import { Box, FormControl, InputLabel, NativeSelect } from '@mui/material';
 import { observer } from 'mobx-react';
 import React, { useContext } from 'react';
-import Romcal from 'romcal';
+import { Romcal } from 'romcal';
 import { AppContext } from '../AppContext';
 
 const LocaleMenu = observer(() => {
