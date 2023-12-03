@@ -9,7 +9,7 @@ export class RomcalStore {
   monthlyData: BaseLiturgicalDay[][] = [];
   localeId: string = 'En';
   calendarId: string = 'GeneralRoman';
-  currentYear: number = new Date().getUTCFullYear();
+  currentYear: number = new Date().getFullYear();
   currentMonth: number = new Date().getMonth();
 
   constructor() {
@@ -62,16 +62,16 @@ export class RomcalStore {
   setPreviousMonth = (): void => {
     const newDate = subMonths(new Date(this.currentYear, this.currentMonth, 1), 1);
     if (newDate.getFullYear() !== this.currentMonth) this.yearlyData = [];
-    this.currentYear = newDate.getUTCFullYear();
-    this.currentMonth = newDate.getUTCMonth();
+    this.currentYear = newDate.getFullYear();
+    this.currentMonth = newDate.getMonth();
     this.getMonthData();
   };
 
   setNextMonth = (): void => {
     const newDate = addMonths(new Date(this.currentYear, this.currentMonth, 1), 1);
     if (newDate.getFullYear() !== this.currentMonth) this.yearlyData = [];
-    this.currentYear = newDate.getUTCFullYear();
-    this.currentMonth = newDate.getUTCMonth();
+    this.currentYear = newDate.getFullYear();
+    this.currentMonth = newDate.getMonth();
     this.getMonthData();
   };
 }
