@@ -30,9 +30,9 @@ app.get('/romcal/general-roman/:locale/:year?', async (req, res) => {
   }
 
   // Load dynamically the localized General Roman Calendar
-  const calendarModule = require(`./node_modules/@romcal/calendar.general-roman/cjs/${locale}.js`);
+  const Roman = require('@romcal/calendar.general-roman');
   const localeVarName = Romcal.LOCALE_VAR_NAMES[localeIndex];
-  const localizedCalendar = calendarModule[`GeneralRoman_${localeVarName}`];
+  const localizedCalendar = Roman[`GeneralRoman_${localeVarName}`];
 
   // Initialize a romcal object with the General Roman Calendar data.
   const romcalGeneralRoman = new Romcal({ localizedCalendar });
