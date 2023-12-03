@@ -7,7 +7,8 @@ import AdditionalLineContent from './AdditionalLineContent';
 
 export default function Day(props: { liturgicalDay: BaseLiturgicalDay[] }) {
   const { liturgicalDay } = props;
-  const date = new Date(liturgicalDay[0].date);
+  const d = new Date(liturgicalDay[0].date);
+  const date = new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate(), 0, 0, 0, 0);
 
   return (
     <>
@@ -17,7 +18,7 @@ export default function Day(props: { liturgicalDay: BaseLiturgicalDay[] }) {
         direction="row"
         justifyContent="flex-start"
         alignItems="flex-start"
-        className={`dow-${date.getUTCDay()} date-in-month-${date.getUTCDate()}`}
+        className={`dow-${date.getUTCDay()} date-in-month-${date.getUTCDate()} miy-${date.getUTCMonth()}`}
       >
         <Grid item xs={1}>
           <Box>
