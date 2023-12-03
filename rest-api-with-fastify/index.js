@@ -4,7 +4,11 @@ import path from 'path';
 import Fastify from 'fastify';
 import { France_Fr } from '@romcal/calendar.france';
 
-const fastify = new Fastify();
+const fastify = new Fastify({
+  logger: {
+    level: process.env.LOG_LEVEL || 'fatal',
+  }
+});
 
 /**
  * Wire an index HTML page to the URL root of this server.
@@ -45,6 +49,7 @@ const manageGeneralRomanRoute = async (request, reply) => {
     // Finally, send the computed data.
     return reply.code(200).header('Content-Type', 'application/json; charset=utf-8').send(JSON.stringify(data));
   } catch ({ message }) {
+    fastify.log.error(message);
     // If romcal return an error, we must manage and display it through Fastify.
     const code = 500;
     reply.status(code).send({ code, message });
