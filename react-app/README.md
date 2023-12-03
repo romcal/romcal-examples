@@ -39,6 +39,22 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+### `yarn dev:link`
+
+Link development dependencies like an updated copy of romcal.
+
+If your `romcal-examples` checkout is a sibling to romcal, stored at...
+- `romcal-examples`
+- `romcal`
+then this will work for you by default.
+
+If you store your `romcal` checkout in a different folder, like `lib`, as an example, you'd need to run:
+```shell
+ROMCAL_ALIAS=lib yarn dev:link
+```
+
+So the name you provide to the `ROMCAL_ALIAS` environment var needs to be what it's called in relation to the parent folder of `romcal-examples`.
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).

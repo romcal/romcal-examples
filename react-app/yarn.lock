@@ -1990,247 +1990,243 @@
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
 
-"@romcal/calendar.americas@file:../../lib/dist/bundles/americas":
+"@romcal/calendar.americas@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/americas"
 
-"@romcal/calendar.argentina@file:../../lib/dist/bundles/argentina":
+"@romcal/calendar.argentina@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/argentina"
 
-"@romcal/calendar.australia@file:../../lib/dist/bundles/australia":
+"@romcal/calendar.australia@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/australia"
 
-"@romcal/calendar.austria@file:../../lib/dist/bundles/austria":
+"@romcal/calendar.austria@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/austria"
 
-"@romcal/calendar.belgium@file:../../lib/dist/bundles/belgium":
+"@romcal/calendar.belgium@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/belgium"
 
-"@romcal/calendar.bolivia@file:../../lib/dist/bundles/bolivia":
+"@romcal/calendar.bolivia@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/bolivia"
 
-"@romcal/calendar.bosnia-herzegovina@file:../../lib/dist/bundles/bosnia-herzegovina":
+"@romcal/calendar.bosnia-herzegovina@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/bosnia-herzegovina"
 
-"@romcal/calendar.brazil@file:../../lib/dist/bundles/brazil":
+"@romcal/calendar.brazil@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/brazil"
 
-"@romcal/calendar.canada@file:../../lib/dist/bundles/canada":
+"@romcal/calendar.canada@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/canada"
 
-"@romcal/calendar.chile@file:../../lib/dist/bundles/chile":
+"@romcal/calendar.chile@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/chile"
 
-"@romcal/calendar.china@file:../../lib/dist/bundles/china":
+"@romcal/calendar.china@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/china"
 
-"@romcal/calendar.costa-rica@file:../../lib/dist/bundles/costa-rica":
+"@romcal/calendar.costa-rica@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/costa-rica"
 
-"@romcal/calendar.croatia@file:../../lib/dist/bundles/croatia":
+"@romcal/calendar.croatia@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/croatia"
 
-"@romcal/calendar.czech-republic@file:../../lib/dist/bundles/czech-republic":
+"@romcal/calendar.czech-republic@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/czech-republic"
 
-"@romcal/calendar.denmark@file:../../lib/dist/bundles/denmark":
+"@romcal/calendar.denmark@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/denmark"
 
-"@romcal/calendar.england@file:../../lib/dist/bundles/england":
+"@romcal/calendar.england@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/england"
 
-"@romcal/calendar.europe@file:../../lib/dist/bundles/europe":
+"@romcal/calendar.europe@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/europe"
 
-"@romcal/calendar.finland@file:../../lib/dist/bundles/finland":
+"@romcal/calendar.finland@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/finland"
 
-"@romcal/calendar.france.lyon@file:../../lib/dist/bundles/france.lyon":
-  version "3.0.0-dev.56"
-  resolved "file:../../lib/dist/bundles/france.lyon"
-
-"@romcal/calendar.france.paris@file:../../lib/dist/bundles/france.paris":
+"@romcal/calendar.france.paris@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/france.paris"
 
-"@romcal/calendar.france.saint-denis@file:../../lib/dist/bundles/france.saint-denis":
+"@romcal/calendar.france.saint-denis@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/france.saint-denis"
 
-"@romcal/calendar.france.strasbourg@file:../../lib/dist/bundles/france.strasbourg":
+"@romcal/calendar.france.strasbourg@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/france.strasbourg"
 
-"@romcal/calendar.france@file:../../lib/dist/bundles/france":
+"@romcal/calendar.france@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/france"
 
-"@romcal/calendar.general-roman@file:../../lib/dist/bundles/general-roman":
+"@romcal/calendar.general-roman@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/general-roman"
 
-"@romcal/calendar.germany@file:../../lib/dist/bundles/germany":
+"@romcal/calendar.germany@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/germany"
 
-"@romcal/calendar.greece@file:../../lib/dist/bundles/greece":
+"@romcal/calendar.greece@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/greece"
 
-"@romcal/calendar.guatemala@file:../../lib/dist/bundles/guatemala":
+"@romcal/calendar.guatemala@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/guatemala"
 
-"@romcal/calendar.hungary@file:../../lib/dist/bundles/hungary":
+"@romcal/calendar.hungary@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/hungary"
 
-"@romcal/calendar.india@file:../../lib/dist/bundles/india":
+"@romcal/calendar.india@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/india"
 
-"@romcal/calendar.ireland@file:../../lib/dist/bundles/ireland":
+"@romcal/calendar.ireland@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/ireland"
 
-"@romcal/calendar.italy@file:../../lib/dist/bundles/italy":
+"@romcal/calendar.italy@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/italy"
 
-"@romcal/calendar.japan@file:../../lib/dist/bundles/japan":
+"@romcal/calendar.japan@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/japan"
 
-"@romcal/calendar.lebanon@file:../../lib/dist/bundles/lebanon":
+"@romcal/calendar.lebanon@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/lebanon"
 
-"@romcal/calendar.lithuania@file:../../lib/dist/bundles/lithuania":
+"@romcal/calendar.lithuania@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/lithuania"
 
-"@romcal/calendar.malta@file:../../lib/dist/bundles/malta":
+"@romcal/calendar.malta@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/malta"
 
-"@romcal/calendar.mexico@file:../../lib/dist/bundles/mexico":
+"@romcal/calendar.mexico@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/mexico"
 
-"@romcal/calendar.netherlands@file:../../lib/dist/bundles/netherlands":
+"@romcal/calendar.netherlands@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/netherlands"
 
-"@romcal/calendar.new-zealand@file:../../lib/dist/bundles/new-zealand":
+"@romcal/calendar.new-zealand@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/new-zealand"
 
-"@romcal/calendar.norway@file:../../lib/dist/bundles/norway":
+"@romcal/calendar.norway@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/norway"
 
-"@romcal/calendar.panama@file:../../lib/dist/bundles/panama":
+"@romcal/calendar.panama@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/panama"
 
-"@romcal/calendar.paraguay@file:../../lib/dist/bundles/paraguay":
+"@romcal/calendar.paraguay@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/paraguay"
 
-"@romcal/calendar.peru@file:../../lib/dist/bundles/peru":
+"@romcal/calendar.peru@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/peru"
 
-"@romcal/calendar.philippines@file:../../lib/dist/bundles/philippines":
+"@romcal/calendar.philippines@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/philippines"
 
-"@romcal/calendar.poland@file:../../lib/dist/bundles/poland":
+"@romcal/calendar.poland@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/poland"
 
-"@romcal/calendar.portugal@file:../../lib/dist/bundles/portugal":
+"@romcal/calendar.portugal@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/portugal"
 
-"@romcal/calendar.puerto-rico@file:../../lib/dist/bundles/puerto-rico":
+"@romcal/calendar.puerto-rico@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/puerto-rico"
 
-"@romcal/calendar.romania@file:../../lib/dist/bundles/romania":
+"@romcal/calendar.romania@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/romania"
 
-"@romcal/calendar.russia@file:../../lib/dist/bundles/russia":
+"@romcal/calendar.russia@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/russia"
 
-"@romcal/calendar.scotland@file:../../lib/dist/bundles/scotland":
+"@romcal/calendar.scotland@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/scotland"
 
-"@romcal/calendar.slovakia@file:../../lib/dist/bundles/slovakia":
+"@romcal/calendar.slovakia@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/slovakia"
 
-"@romcal/calendar.slovenia@file:../../lib/dist/bundles/slovenia":
+"@romcal/calendar.slovenia@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/slovenia"
 
-"@romcal/calendar.spain@file:../../lib/dist/bundles/spain":
+"@romcal/calendar.spain@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/spain"
 
-"@romcal/calendar.sri-lanka@file:../../lib/dist/bundles/sri-lanka":
+"@romcal/calendar.sri-lanka@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/sri-lanka"
 
-"@romcal/calendar.sweden@file:../../lib/dist/bundles/sweden":
+"@romcal/calendar.sweden@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/sweden"
 
-"@romcal/calendar.switzerland@file:../../lib/dist/bundles/switzerland":
+"@romcal/calendar.switzerland@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/switzerland"
 
-"@romcal/calendar.ukraine@file:../../lib/dist/bundles/ukraine":
+"@romcal/calendar.ukraine@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/ukraine"
 
-"@romcal/calendar.united-states@file:../../lib/dist/bundles/united-states":
+"@romcal/calendar.united-states@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/united-states"
 
-"@romcal/calendar.uruguay@file:../../lib/dist/bundles/uruguay":
+"@romcal/calendar.uruguay@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/uruguay"
 
-"@romcal/calendar.venezuela@file:../../lib/dist/bundles/venezuela":
+"@romcal/calendar.venezuela@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/venezuela"
 
-"@romcal/calendar.vietnam@file:../../lib/dist/bundles/vietnam":
+"@romcal/calendar.vietnam@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/vietnam"
 
-"@romcal/calendar.wales@file:../../lib/dist/bundles/wales":
+"@romcal/calendar.wales@^3.0.0-dev.56":
   version "3.0.0-dev.56"
   resolved "file:../../lib/dist/bundles/wales"
 
