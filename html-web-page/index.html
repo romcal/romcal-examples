@@ -24,7 +24,7 @@
       });
       const year = new Date().getUTCFullYear();
 
-      romcal.generateCalendar(new Date().getUTCFullYear()).then((myCalendar) => {
+      romcal.generateCalendar(year).then((myCalendar) => {
         console.log(`A calendar that contains all liturgical days occurring during ${year}:`);
         console.log(myCalendar);
       });
