@@ -4,11 +4,11 @@ import { format } from 'date-fns';
 import React from 'react';
 import { BaseLiturgicalDay } from 'romcal';
 import AdditionalLineContent from './AdditionalLineContent';
+import { startOfDay } from '../utils/date';
 
 export default function Day(props: { liturgicalDay: BaseLiturgicalDay[] }) {
   const { liturgicalDay } = props;
-  const d = new Date(liturgicalDay[0].date);
-  const date = new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate(), 0, 0, 0, 0);
+  const date = startOfDay(liturgicalDay[0].date);
 
   return (
     <>
