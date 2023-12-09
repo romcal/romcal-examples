@@ -1,10 +1,15 @@
-import Romcal from 'romcal';
+import {Romcal} from 'romcal';
 import fs from 'fs';
 import path from 'path';
 import Fastify from 'fastify';
 import { France_Fr } from '@romcal/calendar.france';
+import * as GeneralRoman from '@romcal/calendar.general-roman';
 
-const fastify = new Fastify();
+const fastify = new Fastify({
+  logger: {
+    level: process.env.LOG_LEVEL || 'fatal',
+  }
+});
 
 /**
  * Wire an index HTML page to the URL root of this server.
@@ -29,10 +34,8 @@ const manageGeneralRomanRoute = async (request, reply) => {
     return reply.status(code).send({ code, message: "The provided locale doesn't exists" });
   }
 
-  // Load dynamically the localized General Roman Calendar
-  const module = await import(`@romcal/calendar.general-roman/esm/${locale}.mjs`);
   const localeVarName = Romcal.LOCALE_VAR_NAMES[localeIndex];
-  const localizedCalendar = module[`GeneralRoman_${localeVarName}`];
+  const localizedCalendar = GeneralRoman[`GeneralRoman_${localeVarName}`];
 
   // Initialize a romcal object with the General Roman Calendar data.
   const romcalGeneralRoman = new Romcal({ localizedCalendar });
@@ -45,6 +48,7 @@ const manageGeneralRomanRoute = async (request, reply) => {
     // Finally, send the computed data.
     return reply.code(200).header('Content-Type', 'application/json; charset=utf-8').send(JSON.stringify(data));
   } catch ({ message }) {
+    fastify.log.error(message);
     // If romcal return an error, we must manage and display it through Fastify.
     const code = 500;
     reply.status(code).send({ code, message });

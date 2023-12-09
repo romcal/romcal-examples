@@ -1,6 +1,6 @@
 import { addMonths, subMonths } from 'date-fns';
 import { makeAutoObservable, runInAction } from 'mobx';
-import Romcal, { BaseLiturgicalDay } from 'romcal';
+import { Romcal, BaseLiturgicalDay } from 'romcal';
 import { CALENDARS } from '../constants/calendars';
 
 export class RomcalStore {
@@ -55,7 +55,7 @@ export class RomcalStore {
     const newYear = date.getFullYear();
     if (newYear !== this.currentMonth) this.yearlyData = [];
     this.currentYear = newYear;
-    this.currentMonth = date.getMonth();
+    this.currentMonth = date.getUTCMonth();
     this.getMonthData();
   };
 
