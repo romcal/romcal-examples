@@ -55,6 +55,25 @@ ROMCAL_ALIAS=lib yarn dev:link
 
 So the name you provide to the `ROMCAL_ALIAS` environment var needs to be what it's called in relation to the parent folder of `romcal-examples`.
 
+### More fun testing bits
+
+If you run the app with `REACT_APP_DAY_VARIANT` set to `developer` or `simple`, the app will appear differently.
+
+`developer` gives additional information about the date and the liturgical day.
+
+`simple` gives the standard, compact view of the day.
+
+```bash
+$ REACT_APP_DAY_VARIANT=developer yarn start
+```
+
+```bash
+$ REACT_APP_DAY_VARIANT=simple yarn start
+```
+
+
+```shell
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).

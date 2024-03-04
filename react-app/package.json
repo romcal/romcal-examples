@@ -68,6 +68,7 @@
     "@romcal/calendar.venezuela": "^3.0.0-dev.57",
     "@romcal/calendar.vietnam": "^3.0.0-dev.57",
     "@romcal/calendar.wales": "^3.0.0-dev.57",
+    "@textea/json-viewer": "^3.4.0",
     "date-fns": "^2.29.3",
     "mobx": "^6.7.0",
     "mobx-react": "^7.6.0",

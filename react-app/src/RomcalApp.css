@@ -1,9 +1,14 @@
-.dow-0:not(.date-in-month-1) {
+.MuiAccordionSummary-contentGutters:has(.developer-day) {
+  padding: 0;
+  margin: 0;
+}
+
+.dow-0:not(.date-in-month-1):not(.developer-day) {
   padding-top: 30px;
   position: relative;
 }
 
-.dow-0:not(.date-in-month-1)::before {
+.dow-0:not(.date-in-month-1):not(.developer-day)::before {
   content: '';
   position: absolute;
   top: 10px;
