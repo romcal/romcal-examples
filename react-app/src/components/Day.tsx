@@ -21,6 +21,7 @@ export type DayProps = {
 
 const Day: FC<{ liturgicalDay: BaseLiturgicalDay[], variant?: DayVariant }> = ({ liturgicalDay, variant }) => {
   const date = startOfDay(liturgicalDay[0].date);
+  const separator = date.getUTCDay() === 0 ? <WeekSeparator className={'week-separator'} /> : <></>;
   const simple = <DayContainer
     container
     direction="row"
@@ -58,18 +59,21 @@ const Day: FC<{ liturgicalDay: BaseLiturgicalDay[], variant?: DayVariant }> = ({
   switch(variant) {
     case DayVariant.Developer:
       wrapped = (
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            id={`diy-${date.getUTCDate()}`}
-            aria-controls={`diy-${date.getUTCDate()}-content`}
-          >
-            {simple}
-          </AccordionSummary>
-          <AccordionDetails>
-            <JsonViewer value={liturgicalDay} rootName={format(date, 'yyyy-MM-dd')} theme={'auto'} />
-          </AccordionDetails>
-        </Accordion>
+        <>
+          {separator}
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              id={`diy-${date.getUTCDate()}`}
+              aria-controls={`diy-${date.getUTCDate()}-content`}
+            >
+              {simple}
+            </AccordionSummary>
+            <AccordionDetails>
+              <JsonViewer value={liturgicalDay} rootName={format(date, 'yyyy-MM-dd')} theme={'auto'} />
+            </AccordionDetails>
+          </Accordion>
+        </>
       );
       break;
     case DayVariant.Simple:
@@ -144,4 +148,9 @@ const OrLabel = styled('span')`
   text-transform: none;
   font-variant: normal;
   font-weight: 400;
+`;
+
+const WeekSeparator = styled('hr')`
+  position: unset;
+  width: 75%;
 `;

@@ -8,7 +8,7 @@
   position: relative;
 }
 
-.dow-0:not(.date-in-month-1):not(.developer-day)::before {
+.dow-0:not(.date-in-month-1):not(.developer-day)::before, .week-separator {
   content: '';
   position: absolute;
   top: 10px;
