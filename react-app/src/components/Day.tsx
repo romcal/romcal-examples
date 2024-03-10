@@ -19,7 +19,7 @@ export type DayProps = {
   variant?: DayVariant;
 }
 
-const Day: FC<{ liturgicalDay: BaseLiturgicalDay[], variant?: DayVariant }> = ({ liturgicalDay, variant }) => {
+const Day: FC<DayProps> = ({ liturgicalDay, variant }) => {
   const date = startOfDay(liturgicalDay[0].date);
   const separator = date.getUTCDay() === 0 ? <WeekSeparator className={'week-separator'} /> : <></>;
   const simple = <DayContainer
