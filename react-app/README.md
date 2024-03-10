@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `yarn start`
+### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -14,12 +14,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `yarn test`
+### `npm test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### `npm run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -29,7 +29,7 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
@@ -39,7 +39,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-### `yarn dev:link`
+### `npm run dev:link`
 
 Link development dependencies like an updated copy of romcal.
 
@@ -50,7 +50,7 @@ then this will work for you by default.
 
 If you store your `romcal` checkout in a different folder, like `lib`, as an example, you'd need to run:
 ```shell
-ROMCAL_ALIAS=lib yarn dev:link
+ROMCAL_ALIAS=lib npm run dev:link
 ```
 
 So the name you provide to the `ROMCAL_ALIAS` environment var needs to be what it's called in relation to the parent folder of `romcal-examples`.
@@ -64,11 +64,11 @@ If you run the app with `REACT_APP_DAY_VARIANT` set to `developer` or `simple`, 
 `simple` gives the standard, compact view of the day.
 
 ```bash
-$ REACT_APP_DAY_VARIANT=developer yarn start
+$ REACT_APP_DAY_VARIANT=developer npm start
 ```
 
 ```bash
-$ REACT_APP_DAY_VARIANT=simple yarn start
+$ REACT_APP_DAY_VARIANT=simple npm start
 ```
 
 
