@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { render, screen } from '@testing-library/react';
-import RomcalApp from './RomcalApp';
+import RomcalApp from '../RomcalApp';
 
 import '@testing-library/jest-dom'
 
