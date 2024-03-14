@@ -1,10 +1,10 @@
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { Container, createTheme, ThemeProvider } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import {LocalizationProvider} from '@mui/x-date-pickers';
+import {Container, createTheme, ThemeProvider} from '@mui/material';
+import {styled} from '@mui/material/styles';
+import {AdapterDateFns} from '@mui/x-date-pickers/AdapterDateFns';
 import React from 'react';
-import { AppContext, stores } from './AppContext';
-import { Calendar } from './components/Calendar';
+import {AppContext, stores, variant} from './AppContext';
+import {Calendar} from './components/Calendar';
 import Header from './components/Header';
 import Headline from './components/Headline';
 import './RomcalApp.css';
@@ -28,7 +28,7 @@ const theme = createTheme({
 
 function RomcalApp() {
   return (
-    <AppContext.Provider value={stores}>
+    <AppContext.Provider value={{ stores, variant }}>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <ThemeProvider theme={theme}>
           <AppContainer maxWidth="md" fixed={true}>

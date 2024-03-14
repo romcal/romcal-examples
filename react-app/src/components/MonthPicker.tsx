@@ -9,7 +9,10 @@ import { useContext } from 'react';
 import { AppContext } from '../AppContext';
 
 const MonthPicker = observer(() => {
-  const { romcalStore } = useContext(AppContext);
+  const {
+  stores: {
+    romcalStore
+  } } = useContext(AppContext);
   const { currentYear, currentMonth } = romcalStore;
 
   const previousMonth = () => romcalStore.setPreviousMonth();

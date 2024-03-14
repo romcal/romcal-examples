@@ -5,7 +5,10 @@ import { Romcal } from 'romcal';
 import { AppContext } from '../AppContext';
 
 const LocaleMenu = observer(() => {
-  const { romcalStore } = useContext(AppContext);
+  const {
+  stores: {
+    romcalStore
+  } } = useContext(AppContext);
   const { localeId, setLocaleId } = romcalStore;
 
   const allLocales = Romcal.LOCALE_IDS.reduce((acc: Record<string, string>, pkg, index) => {

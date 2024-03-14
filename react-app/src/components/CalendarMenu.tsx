@@ -13,8 +13,7 @@ const toHumanName = (str: string): string =>
   );
 
 const CalendarMenu = observer(() => {
-  const { romcalStore } = useContext(AppContext);
-  const { calendarId, setCalendarId } = romcalStore;
+  const { stores: { romcalStore: { calendarId, setCalendarId } } } = useContext(AppContext);
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     if (event.target.value) {
