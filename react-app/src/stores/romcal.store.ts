@@ -18,7 +18,7 @@ export class RomcalStore {
 
   fetchRomcalData = async () => {
     if (this.yearlyData.length === 0) {
-      const calendar = (await CALENDARS[this.calendarId])[`${this.calendarId}_${this.localeId}`];
+      const calendar = (CALENDARS[this.calendarId])[`${this.calendarId}_${this.localeId}`];
       const romcal = new Romcal({ localizedCalendar: calendar });
       const data = await romcal.generateCalendar(this.currentYear).then(Object.values);
       runInAction(() => {
