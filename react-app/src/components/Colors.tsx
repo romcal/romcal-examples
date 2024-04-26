@@ -1,8 +1,9 @@
+import { nanoid } from 'nanoid';
 import { capitalize } from '@mui/material';
-import React from 'react';
+import React, { FC } from 'react';
 import { Color } from 'romcal';
 
-export function SingleColor(props: { color: Color }) {
+export const SingleColor = (props: { color: Color }) => {
   const { color } = props;
   return (
     <>
@@ -10,18 +11,18 @@ export function SingleColor(props: { color: Color }) {
       {capitalize(color.toLowerCase())}
     </>
   );
-}
+};
 
-export default function Colors(props: { colors: Color[] }) {
-  const { colors } = props;
-  return (
-    <>
-      {colors.map((color, index) => (
-        <span key={index}>
-          {index > 0 ? ', ' : ''}
-          <SingleColor key={color} color={color} />
-        </span>
-      ))}
-    </>
-  );
-}
+const Colors: FC<{ colors: Color[] }> = ({ colors }) => {
+  return colors.map((color, index) => {
+    const id = `color-${index}-${nanoid(6)}`;
+    return (
+      <span key={id}>
+        {index > 0 ? ', ' : ''}
+        <SingleColor key={color} color={color} />
+      </span>
+    );
+  });
+};
+
+export default Colors;

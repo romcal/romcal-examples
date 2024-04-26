@@ -1,6 +1,7 @@
 import { Box, capitalize, FormControl, InputLabel, NativeSelect } from '@mui/material';
 import { observer } from 'mobx-react';
 import React, { useContext } from 'react';
+
 import { AppContext } from '../AppContext';
 import { CALENDARS } from '../constants/calendars';
 
@@ -9,11 +10,15 @@ const toHumanName = (str: string): string =>
     str
       .replace(/_/g, ' / ')
       .replace(/([A-Z])/g, ' $1')
-      .replace(/\s([a-z])/g, (c) => ` ${c.toUpperCase()}`),
+      .replace(/\s([a-z])/g, (c) => ` ${c.toUpperCase()}`)
   );
 
 const CalendarMenu = observer(() => {
-  const { stores: { romcalStore: { calendarId, setCalendarId } } } = useContext(AppContext);
+  const {
+    stores: {
+      romcalStore: { calendarId, setCalendarId },
+    },
+  } = useContext(AppContext);
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     if (event.target.value) {

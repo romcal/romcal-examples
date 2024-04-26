@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "./cypress.config.ts",
+    "./vite.config.ts",
+    "./cypress/**/*.ts"
+  ],
+  "compilerOptions": {
+    "noEmit": true
+  }
+}

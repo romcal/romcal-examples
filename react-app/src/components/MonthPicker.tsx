@@ -6,13 +6,18 @@ import { DatePicker } from '@mui/x-date-pickers';
 import { observer } from 'mobx-react';
 import * as React from 'react';
 import { useContext } from 'react';
+
 import { AppContext } from '../AppContext';
+
+const Container = styled('div')`
+  margin-top: 20px;
+  display: inline-flex;
+`;
 
 const MonthPicker = observer(() => {
   const {
-  stores: {
-    romcalStore
-  } } = useContext(AppContext);
+    stores: { romcalStore },
+  } = useContext(AppContext);
   const { currentYear, currentMonth } = romcalStore;
 
   const previousMonth = () => romcalStore.setPreviousMonth();
@@ -51,8 +56,3 @@ const MonthPicker = observer(() => {
 });
 
 export default MonthPicker;
-
-const Container = styled('div')`
-  margin-top: 20px;
-  display: inline-flex;
-`;

@@ -1,9 +1,21 @@
 import { Box, Grid, Link } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import React from 'react';
+
 import RomcalHeaderLogo from './RomcalHeaderLogo';
 
-export default function Header() {
+const HeaderLinksContainer = styled(Box)`
+  margin: 20px 0;
+`;
+
+const HeaderLink = styled(Link)`
+  text-transform: uppercase;
+  margin: 10px;
+  font-weight: bold;
+  font-size: 0.9em;
+`;
+
+const Header = () => {
   return (
     <Grid container direction="row" justifyContent="space-between" alignItems="center">
       <RomcalHeaderLogo />
@@ -18,15 +30,6 @@ export default function Header() {
       </HeaderLinksContainer>
     </Grid>
   );
-}
+};
 
-const HeaderLinksContainer = styled(Box)`
-  margin: 20px 0;
-`;
-
-const HeaderLink = styled(Link)`
-  text-transform: uppercase;
-  margin: 10px;
-  font-weight: bold;
-  font-size: 0.9em;
-`;
+export default Header;

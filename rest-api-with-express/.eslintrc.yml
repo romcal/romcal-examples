@@ -1,0 +1,16 @@
+parserOptions:
+  ecmaVersion: latest
+extends:
+  - 'airbnb-base'
+  - 'plugin:prettier/recommended'
+plugins:
+  - 'no-null'
+rules:
+  no-console: off
+  no-null/no-null: error
+  import/no-extraneous-dependencies:
+    - error
+    - devDependencies:
+      - '**/*.spec.js'
+      - '**/*.cy.js'
+      - '*.config.js'

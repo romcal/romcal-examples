@@ -57,18 +57,18 @@ So the name you provide to the `ROMCAL_ALIAS` environment var needs to be what i
 
 ### More fun testing bits
 
-If you run the app with `REACT_APP_DAY_VARIANT` set to `developer` or `simple`, the app will appear differently.
+If you run the app with `VITE_DAY_VARIANT` set to `developer` or `simple`, the app will appear differently.
 
 `developer` gives additional information about the date and the liturgical day.
 
 `simple` gives the standard, compact view of the day.
 
 ```bash
-$ REACT_APP_DAY_VARIANT=developer npm start
+$ VITE_DAY_VARIANT=developer npm start
 ```
 
 ```bash
-$ REACT_APP_DAY_VARIANT=simple npm start
+$ VITE_DAY_VARIANT=simple npm start
 ```
 
 

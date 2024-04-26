@@ -4,29 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>My Website</title>
+    <title>Romcal v3</title>
 
-    <script src="node_modules/romcal/dist/iife/romcal.js"></script>
-    <script src="node_modules/@romcal/calendar.france/iife/fr.js"></script>
+    <script src="romcal/romcal.js"></script>
+    <script src="romcal/fr.js"></script>
+
+    <link rel="stylesheet" href="styles/main.css" />
   </head>
   <body>
     <h1>romcal v3</h1>
     <hr />
     <p>Open the developer tools and check the console.</p>
+
+    <hr>
+    <div id="calendar"></div>
+
     <script>
       const romcal = new Romcal.Romcal({ localizedCalendar: France_Fr });
+      const log = (message, tag) => {
+        const elem = document.createElement(tag ?? 'div');
+        elem.textContent = message;
+        document.getElementById('calendar').appendChild(elem);
+      }
+
 
       romcal.getAllDefinitions().then((calendarDefinitions) => {
-        console.log(
+        log(
           'All definitions, which are all possible liturgical days of a specific calendar, that can occur during a whole year:',
         );
-        console.log(calendarDefinitions);
+        log(JSON.stringify(calendarDefinitions), 'pre');
       });
       const year = new Date().getUTCFullYear();
 
       romcal.generateCalendar(year).then((myCalendar) => {
-        console.log(`A calendar that contains all liturgical days occurring during ${year}:`);
-        console.log(myCalendar);
+        log(`A calendar that contains all liturgical days occurring during ${year}:`);
+        log(JSON.stringify(myCalendar), 'pre');
       });
     </script>
   </body>
