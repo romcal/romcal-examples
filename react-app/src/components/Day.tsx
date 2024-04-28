@@ -145,7 +145,7 @@ const Day: FC<DayProps> = ({ liturgicalDay, variant }) => {
         <>
           {separator}
           <Accordion
-            className={classNames([`dow-${utcDay}`, `date-in-month-${utcDate}`, `miy-${utcMonth}`])}
+            className={classNames([`dow-${utcDay}`, `date-in-month-${utcDate}`, `miy-${utcMonth}`, `${variant}-day`])}
             TransitionProps={{ unmountOnExit: true }}
           >
             <AccordionSummary
