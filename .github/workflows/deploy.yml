@@ -1,0 +1,146 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint
+    defaults:
+      run:
+        working-directory: ${{ matrix.project }}
+    strategy:
+      matrix:
+        project:
+          - 'react-app'
+          - 'rest-api-with-express'
+          - 'rest-api-with-fastify'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+          cache-dependency-path: ${{ matrix.project }}/package-lock.json
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run linters
+        run: npm run lint
+  test-ui:
+    name: Test (UI)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ matrix.project }}
+    strategy:
+      matrix:
+        browser:
+          - 'chrome'
+        project:
+          - 'react-app'
+          - 'rest-api-with-express'
+          - 'rest-api-with-fastify'
+          - 'html-web-page'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+          cache-dependency-path: ${{ matrix.project }}/package-lock.json
+      - name: Build for Cypress
+        uses: cypress-io/github-action@v6
+        with:
+          working-directory: ${{ matrix.project }}
+          build: npm run build -- --logLevel error
+          runTests: false
+      - name: Run Cypress
+        uses: cypress-io/github-action@v6
+        with:
+          working-directory: ${{ matrix.project }}
+          start: npm run start:built
+          browser: ${{ matrix.browser }}
+          install: false
+      - uses: actions/upload-artifact@master
+        if: failure()
+        with:
+          name: screenshots
+          path: ${{ matrix.project }}/cypress/screenshots
+      - uses: actions/upload-artifact@master
+        if: failure()
+        with:
+          name: videos
+          path: ${{ matrix.project }}/cypress/videos
+  test-unit:
+    name: Test (Unit)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ matrix.project }}
+    strategy:
+      matrix:
+        project:
+          - 'rest-api-with-express'
+          - 'rest-api-with-fastify'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+          cache-dependency-path: ${{ matrix.project }}/package-lock.json
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run Unit Tests
+        run: npm test -- --reporter=xunit --reporter-options output=unit-tests.xml
+      - name: Report Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          files: |
+            ${{ matrix.project }}/unit-tests.xml
+
+  verify:
+    name: Verify
+    runs-on: ubuntu-latest
+    needs:
+      - lint
+      - test-unit
+      - test-ui
+    steps:
+      - name: All Tests Pass
+        if: ${{ !(contains(needs.*.result, 'failure')) && !(contains(needs.*.conclusion, 'cancelled')) && !(contains(needs.*.conclusion, 'skipped')) }}
+        run: exit 0
+      - name: Some Tests Don't Pass
+        if: ${{ (contains(needs.*.result, 'failure')) && (contains(needs.*.conclusion, 'cancelled')) && (contains(needs.*.conclusion, 'skipped')) }}
+        run: exit 1
+  # TODO: test publishing to another repo first
+  #publish:
+  #  name: Publish
+  #  runs-on: ubuntu-latest
+  #  needs:
+  #    - verify
+  #  steps:
+  #    - name: Build React App
+  #      working-directory: react-app
+  #      run: VITE_DAY_VARIANT=developer npm run build
+  #    - name: Deploy
+  #      uses: peaceiris/actions-gh-pages@v4
+  #      with:
+  #        deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+  #        external_repository: romcal/romcal.github.io
+  #        publish_branch: gh-pages
+  #        publish_dir: ./build
+  #        cname: romcal.js.org
+  #        commit_message: ${{ github.event.head_commit.message }}
+  #        force_orphan: true
+  #        user_name: 'romcalproject'
+  #        user_email: 'romcalproject@gmail.com'
+
