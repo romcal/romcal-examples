@@ -1,10 +1,5 @@
 import React, { FC, useMemo } from 'react';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Tooltip from '@mui/material/Tooltip';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
+import { Box, Grid, Tooltip, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
 import { format } from 'date-fns';
