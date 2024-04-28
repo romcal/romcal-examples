@@ -8,16 +8,14 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
 import { format } from 'date-fns';
 import { BaseLiturgicalDay } from 'romcal';
-import { parse, stringify } from 'flatted';
 
+import flatten from '../utils/flatten';
 import { startOfDay } from '../utils/date';
 
 import AdditionalLineContent from './AdditionalLineContent';
 
 const AccordionDetails = lazy(() => import('@mui/material/AccordionDetails'));
 const JsonViewer = lazy(() => import('@microlink/react-json-view'));
-
-const flatted = (obj: any) => parse(stringify(obj));
 
 export enum DayVariant {
   Developer = 'developer',
@@ -90,7 +88,6 @@ const WeekSeparator = styled('hr')`
 const Day: FC<DayProps> = ({ liturgicalDay, variant }) => {
   const date = startOfDay(liturgicalDay[0].date);
   const utcDate = date.getUTCDate();
-  const prettyUTCDate = format(date, 'yyyy-MM-dd');
   const simple = useMemo(
     () => (
       <DayContainer
@@ -145,7 +142,7 @@ const Day: FC<DayProps> = ({ liturgicalDay, variant }) => {
                 {simple}
               </AccordionSummary>
               <AccordionDetails>
-                <JsonViewer src={flatted(liturgicalDay)} name={prettyUTCDate} />
+                <JsonViewer src={liturgicalDay.map(flatten)} name={liturgicalDay[0].date} />
               </AccordionDetails>
             </Accordion>
           </>
@@ -154,7 +151,7 @@ const Day: FC<DayProps> = ({ liturgicalDay, variant }) => {
       default:
         return simple;
     }
-  }, [variant, liturgicalDay, utcDate, date, simple, prettyUTCDate]);
+  }, [variant, liturgicalDay, utcDate, date, simple]);
 
   return (
     <>
