@@ -1,21 +1,21 @@
-import React, { FC, lazy, useMemo } from 'react';
+import React, { FC, useMemo } from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Tooltip from '@mui/material/Tooltip';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
 import { format } from 'date-fns';
 import { BaseLiturgicalDay } from 'romcal';
+import JsonViewer from '@microlink/react-json-view';
+import classNames from 'classnames';
 
 import flatten from '../utils/flatten';
 import { startOfDay } from '../utils/date';
 
 import AdditionalLineContent from './AdditionalLineContent';
-
-const AccordionDetails = lazy(() => import('@mui/material/AccordionDetails'));
-const JsonViewer = lazy(() => import('@microlink/react-json-view'));
 
 export enum DayVariant {
   Developer = 'developer',
@@ -85,77 +85,95 @@ const WeekSeparator = styled('hr')`
   width: 75%;
 `;
 
+interface SimpleDayProps {
+  date: Date;
+  liturgicalDay: BaseLiturgicalDay[];
+  variant: DayVariant;
+}
+
+const SimpleDay: FC<SimpleDayProps> = ({ date, liturgicalDay, variant }) => {
+  const utcDate = date.getUTCDate();
+  const utcDay = date.getUTCDay();
+  const utcMonth = date.getUTCMonth();
+  const simpleClasses =
+    variant === DayVariant.Simple ? [`dow-${utcDay}`, `date-in-month-${utcDate}`, `miy-${utcMonth}`] : [];
+  return (
+    <DayContainer
+      container
+      direction="row"
+      justifyContent="flex-start"
+      alignItems="flex-start"
+      className={classNames([...simpleClasses, `${variant}-day`])}
+    >
+      <Grid item xs={1}>
+        <Box>
+          <Tooltip placement="top-start" title={format(date, 'EEEE')}>
+            <DayNumber>{utcDate}</DayNumber>
+          </Tooltip>
+        </Box>
+      </Grid>
+      <Grid item xs>
+        <Box>
+          <MainTitle className={liturgicalDay[0].rank.toLowerCase()}>{liturgicalDay[0].name}</MainTitle>
+          <AdditionalLineContent day={liturgicalDay[0]} />
+          {liturgicalDay.length > 1 &&
+            liturgicalDay.slice(1).map((altDay) => (
+              <div key={altDay.id}>
+                <OptionalTitle key={altDay.id} className={altDay.rank.toLowerCase()}>
+                  {altDay.isOptional ? <OrLabel>or: </OrLabel> : <></>}
+                  {altDay.name}
+                </OptionalTitle>
+                <AdditionalLineContent day={altDay} />
+              </div>
+            ))}
+        </Box>
+      </Grid>
+    </DayContainer>
+  );
+};
+
 const Day: FC<DayProps> = ({ liturgicalDay, variant }) => {
   const date = startOfDay(liturgicalDay[0].date);
   const utcDate = date.getUTCDate();
+  const utcDay = date.getUTCDay();
+  const utcMonth = date.getUTCMonth();
   const simple = useMemo(
-    () => (
-      <DayContainer
-        container
-        direction="row"
-        justifyContent="flex-start"
-        alignItems="flex-start"
-        className={`dow-${date.getUTCDay()} date-in-month-${utcDate} miy-${date.getUTCMonth()} ${variant}-day`}
-      >
-        <Grid item xs={1}>
-          <Box>
-            <Tooltip placement="top-start" title={format(date, 'EEEE')}>
-              <DayNumber>{date.getUTCDate()}</DayNumber>
-            </Tooltip>
-          </Box>
-        </Grid>
-        <Grid item xs>
-          <Box>
-            <MainTitle className={liturgicalDay[0].rank.toLowerCase()}>{liturgicalDay[0].name}</MainTitle>
-            <AdditionalLineContent day={liturgicalDay[0]} />
-            {liturgicalDay.length > 1 &&
-              liturgicalDay.slice(1).map((altDay) => (
-                <div key={altDay.id}>
-                  <OptionalTitle key={altDay.id} className={altDay.rank.toLowerCase()}>
-                    {altDay.isOptional ? <OrLabel>or: </OrLabel> : <></>}
-                    {altDay.name}
-                  </OptionalTitle>
-                  <AdditionalLineContent day={altDay} />
-                </div>
-              ))}
-          </Box>
-        </Grid>
-      </DayContainer>
-    ),
-    [date, liturgicalDay, utcDate, variant]
+    () => <SimpleDay date={date} liturgicalDay={liturgicalDay} variant={variant ?? DayVariant.Simple} />,
+    [date, liturgicalDay, variant]
   );
 
-  const wrapped = useMemo(() => {
-    const separator = date.getUTCDay() === 0 ? <WeekSeparator className="week-separator" /> : <></>;
-
-    switch (variant) {
-      case DayVariant.Developer:
-        return (
-          <>
-            {separator}
-            <Accordion>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                id={`diy-${utcDate}`}
-                aria-controls={`diy-${utcDate}-content`}
-              >
-                {simple}
-              </AccordionSummary>
-              <AccordionDetails>
-                <JsonViewer src={liturgicalDay.map(flatten)} name={liturgicalDay[0].date} />
-              </AccordionDetails>
-            </Accordion>
-          </>
-        );
-      case DayVariant.Simple:
-      default:
-        return simple;
-    }
-  }, [variant, liturgicalDay, utcDate, date, simple]);
-
+  const separator = utcDay === 0 ? <WeekSeparator className="week-separator" /> : <></>;
+  let wrapped = simple;
+  switch (variant) {
+    case DayVariant.Developer:
+      wrapped = (
+        <>
+          {separator}
+          <Accordion
+            className={classNames([`dow-${utcDay}`, `date-in-month-${utcDate}`, `miy-${utcMonth}`])}
+            TransitionProps={{ unmountOnExit: true }}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              id={`diy-${utcDate}`}
+              aria-controls={`diy-${utcDate}-content`}
+            >
+              {simple}
+            </AccordionSummary>
+            <AccordionDetails>
+              <JsonViewer src={liturgicalDay.map(flatten)} name={liturgicalDay[0].date} />
+            </AccordionDetails>
+          </Accordion>
+        </>
+      );
+      break;
+    case DayVariant.Simple:
+    default:
+      break;
+  }
   return (
     <>
-      {date.getUTCDate() === 1 && <MonthTitle>{format(date, 'MMMM yyyy')}</MonthTitle>}
+      {utcDate === 1 && <MonthTitle>{format(date, 'MMMM yyyy')}</MonthTitle>}
       {wrapped}
     </>
   );

@@ -82,6 +82,7 @@
     "@romcal/calendar.venezuela": "3.0.0-dev.67",
     "@romcal/calendar.vietnam": "3.0.0-dev.67",
     "@romcal/calendar.wales": "3.0.0-dev.67",
+    "classnames": "^2.5.1",
     "date-fns": "^2.29.3",
     "flatted": "^3.3.1",
     "mobx": "^6.7.0",
