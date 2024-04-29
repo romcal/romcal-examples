@@ -8,6 +8,7 @@ import {Calendar} from './components/Calendar';
 import Header from './components/Header';
 import Headline from './components/Headline';
 import './RomcalApp.css';
+import RomcalVersion from './components/RomcalVersion';
 
 const theme = createTheme({
   palette: {
@@ -35,6 +36,7 @@ function RomcalApp() {
             <Header />
             <Headline />
             <Calendar />
+            <RomcalVersion />
           </AppContainer>
         </ThemeProvider>
       </LocalizationProvider>

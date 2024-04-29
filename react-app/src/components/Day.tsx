@@ -3,11 +3,48 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
 import { format } from 'date-fns';
 import React, {FC} from 'react';
-import { BaseLiturgicalDay } from 'romcal';
+import { BaseLiturgicalDay, LiturgicalDay } from 'romcal';
 
-import { JsonViewer } from '@textea/json-viewer';
 import AdditionalLineContent from './AdditionalLineContent';
 import { startOfDay } from '../utils/date';
+import ReactJson from 'react-json-view';
+
+const toPlainObject = (obj: BaseLiturgicalDay): BaseLiturgicalDay => ({
+  id: obj.id,
+  ...(obj.customLocaleId ? { customLocaleId: obj.customLocaleId } : {}),
+  name: obj.name,
+  date: obj.date,
+  ...(obj.dateExceptions ? { dateExceptions: obj.dateExceptions } : {}),
+  dateDef: obj.dateDef,
+  precedence: obj.precedence,
+  rank: obj.rank,
+  rankName: obj.rankName,
+  allowSimilarRankItems: obj.allowSimilarRankItems,
+  isHolyDayOfObligation: obj.isHolyDayOfObligation,
+  isOptional: obj.isOptional,
+  i18nDef: obj.i18nDef,
+  seasons: obj.seasons,
+  seasonNames: obj.seasonNames,
+  periods: obj.periods,
+  colors: obj.colors,
+  colorNames: obj.colorNames,
+  martyrology: obj.martyrology,
+  titles: obj.titles,
+  calendar: obj.calendar,
+  cycles: {
+    properCycle: obj.cycles.properCycle,
+    properCycleName: obj.cycles.properCycleName,
+    sundayCycle: obj.cycles.sundayCycle,
+    sundayCycleName: obj.cycles.sundayCycleName,
+    weekdayCycle: obj.cycles.weekdayCycle,
+    weekdayCycleName: obj.cycles.weekdayCycleName,
+    psalterWeek: obj.cycles.psalterWeek,
+    psalterWeekName: obj.cycles.psalterWeekName,
+  },
+  fromCalendarId: 'ProperOfTime',
+  fromExtendedCalendars: [],
+  ...(obj.weekday ? { weekday: toPlainObject(obj.weekday) as LiturgicalDay } : {}),
+});
 
 export enum DayVariant {
   Developer =  'developer',
@@ -70,7 +107,12 @@ const Day: FC<DayProps> = ({ liturgicalDay, variant }) => {
               {simple}
             </AccordionSummary>
             <AccordionDetails>
-              <JsonViewer value={liturgicalDay} rootName={format(date, 'yyyy-MM-dd')} theme={'auto'} />
+                <ReactJson
+                  src={liturgicalDay.map((obj) => toPlainObject(obj))}
+                  displayDataTypes={false}
+                  shouldCollapse={(field) => ['dateDef', 'i18nDef', 'weekday'].includes(field.name ?? '')}
+                  name={liturgicalDay[0].date}
+                />
             </AccordionDetails>
           </Accordion>
         </>
