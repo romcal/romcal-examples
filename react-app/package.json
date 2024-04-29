@@ -5,13 +5,14 @@
   "type": "module",
   "scripts": {
     "build": "tsc && NODE_NO_WARNINGS=1 vite build",
+    "build:dev": "VITE_DAY_VARIANT=developer npm run build",
     "dev:link": "ROMCAL_ALIAS=\"../${ROMCAL_ALIAS:-romcal}\" bash ../scripts/link.sh",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
     "prepare": "npx --yes update-browserslist-db@latest",
     "serve": "vite preview",
     "start": "NODE_NO_WARNINGS=1 vite",
-    "start:developer": "VITE_DAY_VARIANT=developer npm start",
+    "start:dev": "VITE_DAY_VARIANT=developer npm start",
     "start:built": "NODE_NO_WARNINGS=1 npx http-server build -p 3000 -g -s",
     "test": "NODE_NO_WARNINGS=1 npx cypress run"
   },

@@ -8,6 +8,7 @@ import { AppContext, stores, variant } from './AppContext';
 import { Calendar } from './components/Calendar';
 import Header from './components/Header';
 import Headline from './components/Headline';
+import RomcalVersion from './components/RomcalVersion';
 import './RomcalApp.css';
 
 const theme = createTheme({
@@ -48,6 +49,7 @@ const RomcalApp: FC = () => {
             <Header />
             <Headline />
             <Calendar />
+            <RomcalVersion />
           </AppContainer>
         </ThemeProvider>
       </LocalizationProvider>
