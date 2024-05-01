@@ -4,6 +4,7 @@ import fastify from '../app.js';
 
 const chaiModule = chai.use(chaiHttp);
 const { request } = chaiModule;
+const port = Number.parseInt(process.env.ROMCAL_APP_PORT ?? '3000', 10);
 
 chai.use(chaiHttp);
 const { expect } = chai;
@@ -11,7 +12,7 @@ const { expect } = chai;
 let server;
 
 before(async () => {
-  const init = await fastify.listen({ port: 3000 });
+  const init = await fastify.listen({ port });
   server = await request(init);
 });
 
