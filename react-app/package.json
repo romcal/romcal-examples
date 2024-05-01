@@ -13,7 +13,7 @@
     "serve": "vite preview",
     "start": "NODE_NO_WARNINGS=1 vite",
     "start:dev": "VITE_DAY_VARIANT=developer npm start",
-    "start:built": "NODE_NO_WARNINGS=1 npx http-server build -p 3000 -g -s",
+    "start:built": "NODE_NO_WARNINGS=1 npx http-server build -p ${ROMCAL_APP_PORT:-3000} -g -s",
     "test": "NODE_NO_WARNINGS=1 npx cypress run"
   },
   "dependencies": {

@@ -5,9 +5,11 @@ import { Romcal } from 'romcal';
 import * as GeneralRoman from '@romcal/calendar.general-roman';
 import { France_Fr as FranceFR } from '@romcal/calendar.france';
 
+const LOG_LEVEL = process.env.ROMCAL_LOG_LEVEL || 'fatal';
+
 const fastify = new Fastify({
   logger: {
-    level: process.env.LOG_LEVEL || 'fatal',
+    level: LOG_LEVEL,
   },
 });
 

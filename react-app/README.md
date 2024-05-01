@@ -71,8 +71,9 @@ $ VITE_DAY_VARIANT=developer npm start
 $ VITE_DAY_VARIANT=simple npm start
 ```
 
+### Changing ports
 
-```shell
+You can specify the port this is deployed on by setting `ROMCAL_APP_PORT` in your environment, such as `ROMCAL_APP_PORT=8080 npm start`.
 
 ## Learn More
 
