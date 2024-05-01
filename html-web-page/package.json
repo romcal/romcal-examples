@@ -3,7 +3,6 @@
   "scripts": {
     "prestart": "cp node_modules/romcal/dist/iife/romcal.js public/romcal/romcal.js && cp node_modules/@romcal/calendar.france/iife/fr.js public/romcal/fr.js",
     "start": "http-server -g -p ${ROMCAL_APP_PORT:-3000} ./public",
-    "start:built": "npm start",
     "build": "exit 0",
     "test:ui": "cypress run"
   },

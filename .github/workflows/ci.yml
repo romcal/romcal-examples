@@ -65,7 +65,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           working-directory: ${{ matrix.project }}
-          start: npm run start:built
+          start: npm start
           browser: ${{ matrix.browser }}
           install: false
       - uses: actions/upload-artifact@master

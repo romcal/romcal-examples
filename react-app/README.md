@@ -64,16 +64,28 @@ If you run the app with `VITE_DAY_VARIANT` set to `developer` or `simple`, the a
 `simple` gives the standard, compact view of the day.
 
 ```bash
-$ VITE_DAY_VARIANT=developer npm start
+$ VITE_DAY_VARIANT=developer npm run serve
 ```
 
 ```bash
-$ VITE_DAY_VARIANT=simple npm start
+$ VITE_DAY_VARIANT=simple npm run serve
 ```
 
 ### Changing ports
 
-You can specify the port this is deployed on by setting `ROMCAL_APP_PORT` in your environment, such as `ROMCAL_APP_PORT=8080 npm start`.
+You can specify the port this is deployed on by setting `ROMCAL_APP_PORT` in your environment, such as `ROMCAL_APP_PORT=8080 npm run serve`.
+
+### Building for production
+
+```bash
+$ npm run build
+```
+
+### Serving the production build
+
+```bash
+$ npm start
+```
 
 ## Learn More
 

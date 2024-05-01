@@ -11,8 +11,7 @@
     "lint:fix": "npm run lint -- --fix",
     "test": "mocha",
     "test:ui": "cypress run",
-    "build": "exit 0",
-    "start:built": "npm start"
+    "build": "exit 0"
   },
   "dependencies": {
     "@romcal/calendar.france": "3.0.0-dev.67",
