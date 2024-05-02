@@ -1,7 +1,6 @@
 parserOptions:
   project:
     - './tsconfig.json'
-    - './tsconfig.cypress.json'
 extends:
   - airbnb
   - airbnb/hooks
@@ -39,3 +38,12 @@ rules:
         - 'parent'
         - 'sibling'
         - 'index'
+
+overrides:
+  - files:
+      - '**/*.cy.ts'
+    extends:
+      - 'plugin:cypress/recommended'
+    parserOptions:
+      project:
+        - './cypress/tsconfig.json'

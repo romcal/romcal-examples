@@ -1,8 +1,6 @@
-const port = Number.parseInt(process.env.ROMCAL_APP_PORT ?? '3000', 10);
-
 describe('Load', () => {
   it('should load the page', () => {
-    cy.visit(`http://localhost:${port}`);
+    cy.visit(`http://localhost:${Cypress.env('ROMCAL_APP_PORT')}`);
     cy.get('h1').should('have.text', 'romcal v3');
     cy.get('p').should('have.text', 'Open the developer tools and check the console.');
 

@@ -7,4 +7,7 @@ export default defineConfig({
     baseUrl: `http://localhost:${port}`,
     supportFile: false,
   },
+  env: {
+    ROMCAL_APP_PORT: port,
+  },
 });

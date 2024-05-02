@@ -10,5 +10,8 @@ export default defineConfig({
     setupNodeEvents(on) {
       on('file:preprocessor', vitePreprocessor('./vite.config.ts'));
     },
+    env: {
+      ROMCAL_APP_PORT: port,
+    },
   },
 });
