@@ -1,7 +1,7 @@
 describe('Load', () => {
   it('should load the page', () => {
     cy.visit(`http://localhost:${Cypress.env('ROMCAL_APP_PORT')}`);
-    cy.get('h1').should('have.text', 'romcal v3');
+    cy.get('h1').should('have.text', 'romcal');
     cy.get('p').should('have.text', 'Open the developer tools and check the console.');
 
     cy.get('#calendar').find('div').should('have.length', 2).as('messages');
