@@ -1,0 +1,40 @@
+import { BaseLiturgicalDay, LiturgicalDay } from 'romcal';
+
+const flatten = (obj: BaseLiturgicalDay): BaseLiturgicalDay => ({
+  id: obj.id,
+  ...(obj.customLocaleId ? { customLocaleId: obj.customLocaleId } : {}),
+  name: obj.name,
+  date: obj.date,
+  ...(obj.dateExceptions ? { dateExceptions: obj.dateExceptions } : {}),
+  dateDef: obj.dateDef,
+  precedence: obj.precedence,
+  rank: obj.rank,
+  rankName: obj.rankName,
+  allowSimilarRankItems: obj.allowSimilarRankItems,
+  isHolyDayOfObligation: obj.isHolyDayOfObligation,
+  isOptional: obj.isOptional,
+  i18nDef: obj.i18nDef,
+  seasons: obj.seasons,
+  seasonNames: obj.seasonNames,
+  periods: obj.periods,
+  colors: obj.colors,
+  colorNames: obj.colorNames,
+  martyrology: obj.martyrology,
+  titles: obj.titles,
+  calendar: obj.calendar,
+  cycles: {
+    properCycle: obj.cycles.properCycle,
+    properCycleName: obj.cycles.properCycleName,
+    sundayCycle: obj.cycles.sundayCycle,
+    sundayCycleName: obj.cycles.sundayCycleName,
+    weekdayCycle: obj.cycles.weekdayCycle,
+    weekdayCycleName: obj.cycles.weekdayCycleName,
+    psalterWeek: obj.cycles.psalterWeek,
+    psalterWeekName: obj.cycles.psalterWeekName,
+  },
+  fromCalendarId: 'ProperOfTime',
+  fromExtendedCalendars: [],
+  ...(obj.weekday ? { weekday: flatten(obj.weekday) as LiturgicalDay } : {}),
+});
+
+export default flatten;

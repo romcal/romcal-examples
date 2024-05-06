@@ -2,15 +2,32 @@
   "name": "rest-api-with-express-example",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "lint": "eslint .",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "mocha",
+    "test:ui": "cypress run",
+    "build": "exit 0"
   },
   "dependencies": {
     "@romcal/calendar.france": "3.0.0-dev.67",
     "@romcal/calendar.general-roman": "3.0.0-dev.67",
-    "ci": "^2.3.0",
     "express": "^4.18.2",
-    "npm": "^10.2.4",
     "romcal": "3.0.0-dev.67"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.4.1",
+    "chai-http": "^4.4.0",
+    "cypress": "^13.8.1",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-cypress": "^3.0.2",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-no-null": "^1.0.2",
+    "eslint-plugin-prettier": "^5.1.3",
+    "mocha": "^10.4.0",
+    "prettier": "^3.2.5"
+  }
 }

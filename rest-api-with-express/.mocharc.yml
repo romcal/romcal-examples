@@ -1,0 +1,10 @@
+exit: true
+spec: spec/**/*.spec.*js
+enableSourceMaps: true
+enable-source-maps: true
+checkLeaks: true
+timeout: 60000
+normal: 500
+slow: 2000
+fullTrace: true
+bail: true

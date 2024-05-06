@@ -2,13 +2,13 @@ import { Box, FormControl, InputLabel, NativeSelect } from '@mui/material';
 import { observer } from 'mobx-react';
 import React, { useContext } from 'react';
 import { Romcal } from 'romcal';
+
 import { AppContext } from '../AppContext';
 
 const LocaleMenu = observer(() => {
   const {
-  stores: {
-    romcalStore
-  } } = useContext(AppContext);
+    stores: { romcalStore },
+  } = useContext(AppContext);
   const { localeId, setLocaleId } = romcalStore;
 
   const allLocales = Romcal.LOCALE_IDS.reduce((acc: Record<string, string>, pkg, index) => {

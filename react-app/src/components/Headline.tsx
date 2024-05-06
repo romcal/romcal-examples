@@ -1,20 +1,7 @@
 import GitHubIcon from '@mui/icons-material/GitHub';
-import { Button } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import styled from '@mui/material/styles/styled';
 import React from 'react';
-
-export default function Headline() {
-  return (
-    <HeadlineContainer>
-      <p>A JavaScript library that generates liturgical calendars of the Roman Rite of the Roman Catholic Church.</p>
-      <HeadlineFooter>
-        <Button variant="outlined" href="https://github.com/romcal/romcal" startIcon={<GitHubIcon />}>
-          See more
-        </Button>
-      </HeadlineFooter>
-    </HeadlineContainer>
-  );
-}
 
 const HeadlineContainer = styled('div')`
   font-family: 'Roboto', sans-serif;
@@ -35,3 +22,16 @@ const HeadlineFooter = styled('p')`
   text-align: right;
   padding-top: 10px;
 `;
+
+const Headline = () => (
+  <HeadlineContainer>
+    <p>A JavaScript library that generates liturgical calendars of the Roman Rite of the Roman Catholic Church.</p>
+    <HeadlineFooter>
+      <Button variant="outlined" href="https://github.com/romcal/romcal" startIcon={<GitHubIcon />}>
+        See more
+      </Button>
+    </HeadlineFooter>
+  </HeadlineContainer>
+);
+
+export default Headline;

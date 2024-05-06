@@ -1,0 +1,111 @@
+name: CI
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches-ignore:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+   name: Lint
+   defaults:
+      run:
+        working-directory: ${{ matrix.project }}
+   strategy:
+     matrix:
+       project:
+        - 'react-app'
+        - 'rest-api-with-express'
+        - 'rest-api-with-fastify'
+   runs-on: ubuntu-latest
+   steps:
+     - uses: actions/checkout@v4
+     - name: Use Node.js
+       uses: actions/setup-node@v4
+       with:
+         node-version-file: '.nvmrc'
+         cache: 'npm'
+         cache-dependency-path: ${{ matrix.project }}/package-lock.json
+     - name: Install Dependencies
+       run: npm ci
+     - name: Run linters
+       run: npm run lint
+  test-ui:
+    name: Test (UI)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ matrix.project }}
+    strategy:
+      matrix:
+        browser:
+          - 'chrome'
+        project:
+          - 'react-app'
+          - 'rest-api-with-express'
+          - 'rest-api-with-fastify'
+          - 'html-web-page'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+          cache-dependency-path: ${{ matrix.project }}/package-lock.json
+      - name: Build for Cypress
+        uses: cypress-io/github-action@v6
+        with:
+          working-directory: ${{ matrix.project }}
+          build: npm run build -- --logLevel error
+          runTests: false
+      - name: Run Cypress
+        uses: cypress-io/github-action@v6
+        with:
+          working-directory: ${{ matrix.project }}
+          start: npm start
+          browser: ${{ matrix.browser }}
+          install: false
+      - uses: actions/upload-artifact@master
+        if: failure()
+        with:
+          name: screenshots
+          path: ${{ matrix.project }}/cypress/screenshots
+      - uses: actions/upload-artifact@master
+        if: failure()
+        with:
+          name: videos
+          path: ${{ matrix.project }}/cypress/videos
+  test-unit:
+    name: Test (Unit)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ matrix.project }}
+    strategy:
+      matrix:
+        project:
+          - 'rest-api-with-express'
+          - 'rest-api-with-fastify'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+          cache-dependency-path: ${{ matrix.project }}/package-lock.json
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run Unit Tests
+        run: npm test -- --reporter=xunit --reporter-options output=unit-tests.xml
+      - name: Report Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          files: |
+            ${{ matrix.project }}/unit-tests.xml

@@ -1,0 +1,6 @@
+pre {
+    text-wrap: pretty;
+    max-height: 25vh;
+    overflow-y: scroll;
+    width: 50vw;
+}

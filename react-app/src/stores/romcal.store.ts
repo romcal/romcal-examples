@@ -1,6 +1,7 @@
 import { addMonths, subMonths } from 'date-fns';
 import { makeAutoObservable, runInAction } from 'mobx';
 import { Romcal, BaseLiturgicalDay } from 'romcal';
+
 import { CALENDARS } from '../constants/calendars';
 
 export class RomcalStore {
@@ -18,7 +19,7 @@ export class RomcalStore {
 
   fetchRomcalData = async () => {
     if (this.yearlyData.length === 0) {
-      const calendar = (CALENDARS[this.calendarId])[`${this.calendarId}_${this.localeId}`];
+      const calendar = (await CALENDARS[this.calendarId])[`${this.calendarId}_${this.localeId}`];
       const romcal = new Romcal({ localizedCalendar: calendar });
       const data = await romcal.generateCalendar(this.currentYear).then(Object.values);
       runInAction(() => {

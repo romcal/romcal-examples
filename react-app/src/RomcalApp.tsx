@@ -1,12 +1,14 @@
-import {LocalizationProvider} from '@mui/x-date-pickers';
-import {Container, createTheme, ThemeProvider} from '@mui/material';
-import {styled} from '@mui/material/styles';
-import {AdapterDateFns} from '@mui/x-date-pickers/AdapterDateFns';
-import React from 'react';
-import {AppContext, stores, variant} from './AppContext';
-import {Calendar} from './components/Calendar';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { Container, createTheme, ThemeProvider } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import React, { FC, useMemo } from 'react';
+
+import { AppContext, stores, variant } from './AppContext';
+import { Calendar } from './components/Calendar';
 import Header from './components/Header';
 import Headline from './components/Headline';
+import RomcalVersion from './components/RomcalVersion';
 import './RomcalApp.css';
 
 const theme = createTheme({
@@ -26,24 +28,6 @@ const theme = createTheme({
   },
 });
 
-function RomcalApp() {
-  return (
-    <AppContext.Provider value={{ stores, variant }}>
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <ThemeProvider theme={theme}>
-          <AppContainer maxWidth="md" fixed={true}>
-            <Header />
-            <Headline />
-            <Calendar />
-          </AppContainer>
-        </ThemeProvider>
-      </LocalizationProvider>
-    </AppContext.Provider>
-  );
-}
-
-export default RomcalApp;
-
 const AppContainer = styled(Container)`
   border-style: solid;
   border-color: #fff;
@@ -54,3 +38,23 @@ const AppContainer = styled(Container)`
   box-sizing: border-box;
   min-height: 100vh;
 `;
+
+const RomcalApp: FC = () => {
+  const provider = useMemo(() => ({ stores, variant }), []);
+  return (
+    <AppContext.Provider value={provider}>
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <ThemeProvider theme={theme}>
+          <AppContainer maxWidth="md" fixed>
+            <Header />
+            <Headline />
+            <Calendar />
+            <RomcalVersion />
+          </AppContainer>
+        </ThemeProvider>
+      </LocalizationProvider>
+    </AppContext.Provider>
+  );
+};
+
+export default RomcalApp;
