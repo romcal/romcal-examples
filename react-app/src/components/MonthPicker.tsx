@@ -18,7 +18,7 @@ const MonthPicker = observer(() => {
   const {
     stores: { romcalStore },
   } = useContext(AppContext);
-  const { currentYear, currentMonth } = romcalStore;
+  const { currentDate } = romcalStore;
 
   const previousMonth = () => romcalStore.setPreviousMonth();
   const nextMonth = () => romcalStore.setNextMonth();
@@ -41,7 +41,7 @@ const MonthPicker = observer(() => {
           label="Month and Year"
           views={['year', 'month']}
           minDate={new Date('1969-01-01')}
-          value={new Date(currentYear, currentMonth, 1)}
+          value={currentDate}
           onChange={datePickerChange}
           renderInput={(params: TextFieldProps) => <TextField {...params} variant="standard" helperText={null} />}
         />
