@@ -9,10 +9,17 @@ const VersionContainer = styled('div')`
   font-size: 0.8em;
   color: #7f7f7f;
   font-weight: 100;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 `;
 
-const RomcalVersion = observer(() => {
-  return <VersionContainer>romcal v.{Romcal.getVersion()}</VersionContainer>;
-});
+const RomcalVersion = observer(() => (
+  <VersionContainer>
+    <span>romcal v.{Romcal.getVersion()}</span>
+    <span> – </span>
+    <span>app commit {COMMIT_HASH}</span>
+  </VersionContainer>
+));
 
 export default RomcalVersion;
