@@ -7,10 +7,10 @@
     "test:ui": "cypress run"
   },
   "dependencies": {
-    "@romcal/calendar.france": "3.0.0-dev.67",
-    "@romcal/calendar.general-roman": "3.0.0-dev.67",
+    "@romcal/calendar.france": "3.0.0-dev.77",
+    "@romcal/calendar.general-roman": "3.0.0-dev.77",
     "http-server": "^14.1.1",
-    "romcal": "3.0.0-dev.67"
+    "romcal": "3.0.0-dev.77"
   },
   "license": "MIT",
   "devDependencies": {
