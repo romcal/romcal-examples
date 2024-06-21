@@ -16,9 +16,9 @@ const VersionContainer = styled('div')`
 
 const RomcalVersion = observer(() => (
   <VersionContainer>
-    <span>romcal v.{Romcal.getVersion()}</span>
+    <span>romcal library v{Romcal.getVersion()}</span>
     <span> – </span>
-    <span>app commit {COMMIT_HASH}</span>
+    <span>romcal app commit {COMMIT_HASH}</span>
   </VersionContainer>
 ));
 
