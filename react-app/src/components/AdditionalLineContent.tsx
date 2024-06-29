@@ -1,9 +1,9 @@
+import React from 'react';
 import capitalize from '@mui/material/utils/capitalize';
 import styled from '@mui/material/styles/styled';
-import React from 'react';
-import { BaseLiturgicalDay } from 'romcal';
+import type { BaseLiturgicalDay } from 'romcal';
 
-import Colors from './Colors';
+import { Colors } from './Colors';
 
 const Container = styled('p')`
   margin: 0;
@@ -11,7 +11,7 @@ const Container = styled('p')`
   font-size: 0.9em;
 `;
 
-const AdditionalLineContent = (props: { day: BaseLiturgicalDay }) => {
+export const AdditionalLineContent = (props: { day: BaseLiturgicalDay }) => {
   const { day } = props;
   const rank = ['SUNDAY', 'WEEKDAY'].includes(day.rank) ? null : capitalize(day.rankName);
   const hdo = day.isHolyDayOfObligation && day.calendar.dayOfWeek !== 0 ? '(Holy Day of Obligation)' : null;
@@ -23,5 +23,3 @@ const AdditionalLineContent = (props: { day: BaseLiturgicalDay }) => {
     </Container>
   );
 };
-
-export default AdditionalLineContent;

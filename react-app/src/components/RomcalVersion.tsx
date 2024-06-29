@@ -1,6 +1,5 @@
 import React from 'react';
 import { styled } from '@mui/material/styles';
-import { observer } from 'mobx-react';
 import { Romcal } from 'romcal';
 
 const VersionContainer = styled('div')`
@@ -14,12 +13,10 @@ const VersionContainer = styled('div')`
   gap: 10px;
 `;
 
-const RomcalVersion = observer(() => (
+export const RomcalVersion = () => (
   <VersionContainer>
     <span>romcal library v{Romcal.getVersion()}</span>
     <span> – </span>
     <span>romcal app commit {COMMIT_HASH}</span>
   </VersionContainer>
-));
-
-export default RomcalVersion;
+);

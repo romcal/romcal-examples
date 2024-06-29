@@ -1,7 +1,7 @@
+import React, { type FC } from 'react';
 import { nanoid } from 'nanoid';
 import { capitalize } from '@mui/material';
-import React, { FC } from 'react';
-import { Color } from 'romcal';
+import type { Color } from 'romcal';
 
 export const SingleColor = (props: { color: Color }) => {
   const { color } = props;
@@ -13,7 +13,7 @@ export const SingleColor = (props: { color: Color }) => {
   );
 };
 
-const Colors: FC<{ colors: Color[] }> = ({ colors }) => {
+export const Colors: FC<{ colors: Color[] }> = ({ colors }) => {
   return colors.map((color, index) => {
     const id = `color-${index}-${nanoid(6)}`;
     return (
@@ -24,5 +24,3 @@ const Colors: FC<{ colors: Color[] }> = ({ colors }) => {
     );
   });
 };
-
-export default Colors;

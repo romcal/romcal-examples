@@ -1,16 +1,16 @@
-import React, { FC, useMemo } from 'react';
+import React, { type FC, useMemo } from 'react';
 import { Box, Grid, Tooltip, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
 import { format } from 'date-fns';
-import { BaseLiturgicalDay } from 'romcal';
+import type { BaseLiturgicalDay } from 'romcal';
 import JsonViewer from '@microlink/react-json-view';
 import classNames from 'classnames';
 
-import flatten from '../utils/flatten';
+import { flatten } from '../utils/flatten';
 import { startOfDay } from '../utils/date';
 
-import AdditionalLineContent from './AdditionalLineContent';
+import { AdditionalLineContent } from './AdditionalLineContent';
 
 export enum DayVariant {
   Developer = 'developer',
@@ -19,7 +19,7 @@ export enum DayVariant {
 
 export type DayProps = {
   liturgicalDay: BaseLiturgicalDay[];
-  variant?: DayVariant;
+  variant: DayVariant;
 };
 
 const DayContainer = styled(Grid)`
@@ -127,7 +127,7 @@ const SimpleDay: FC<SimpleDayProps> = ({ date, liturgicalDay, variant }) => {
   );
 };
 
-const Day: FC<DayProps> = ({ liturgicalDay, variant }) => {
+export const Day: FC<DayProps> = ({ liturgicalDay, variant }) => {
   const date = startOfDay(liturgicalDay[0].date);
   const utcDate = date.getUTCDate();
   const utcDay = date.getUTCDay();
@@ -138,34 +138,30 @@ const Day: FC<DayProps> = ({ liturgicalDay, variant }) => {
   );
 
   const separator = utcDay === 0 ? <WeekSeparator className="week-separator" /> : <></>;
-  let wrapped = simple;
-  switch (variant) {
-    case DayVariant.Developer:
-      wrapped = (
-        <>
-          {separator}
-          <Accordion
-            className={classNames([`dow-${utcDay}`, `date-in-month-${utcDate}`, `miy-${utcMonth}`, `${variant}-day`])}
-            TransitionProps={{ unmountOnExit: true }}
+  const wrapped =
+    variant === DayVariant.Simple ? (
+      simple
+    ) : (
+      <>
+        {separator}
+        <Accordion
+          className={classNames([`dow-${utcDay}`, `date-in-month-${utcDate}`, `miy-${utcMonth}`, `${variant}-day`])}
+          TransitionProps={{ unmountOnExit: true }}
+        >
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            id={`diy-${utcDate}`}
+            aria-controls={`diy-${utcDate}-content`}
           >
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              id={`diy-${utcDate}`}
-              aria-controls={`diy-${utcDate}-content`}
-            >
-              {simple}
-            </AccordionSummary>
-            <AccordionDetails>
-              <JsonViewer src={liturgicalDay.map(flatten)} name={liturgicalDay[0].date} />
-            </AccordionDetails>
-          </Accordion>
-        </>
-      );
-      break;
-    case DayVariant.Simple:
-    default:
-      break;
-  }
+            {simple}
+          </AccordionSummary>
+          <AccordionDetails>
+            <JsonViewer src={liturgicalDay.map(flatten)} name={liturgicalDay[0].date} />
+          </AccordionDetails>
+        </Accordion>
+      </>
+    );
+
   return (
     <>
       {utcDate === 1 && <MonthTitle>{format(date, 'MMMM yyyy')}</MonthTitle>}
@@ -173,9 +169,3 @@ const Day: FC<DayProps> = ({ liturgicalDay, variant }) => {
     </>
   );
 };
-
-Day.defaultProps = {
-  variant: DayVariant.Simple,
-};
-
-export default Day;
