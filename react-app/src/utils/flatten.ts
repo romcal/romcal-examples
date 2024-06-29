@@ -1,6 +1,6 @@
-import { BaseLiturgicalDay, LiturgicalDay } from 'romcal';
+import type { BaseLiturgicalDay, LiturgicalDay } from 'romcal';
 
-const flatten = (obj: BaseLiturgicalDay): BaseLiturgicalDay => ({
+export const flatten = (obj: BaseLiturgicalDay): BaseLiturgicalDay => ({
   id: obj.id,
   ...(obj.customLocaleId ? { customLocaleId: obj.customLocaleId } : {}),
   name: obj.name,
@@ -36,5 +36,3 @@ const flatten = (obj: BaseLiturgicalDay): BaseLiturgicalDay => ({
   fromExtendedCalendars: [],
   ...(obj.weekday ? { weekday: flatten(obj.weekday) as LiturgicalDay } : {}),
 });
-
-export default flatten;
