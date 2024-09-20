@@ -14,14 +14,14 @@
     "build": "exit 0"
   },
   "dependencies": {
-    "@romcal/calendar.france": "3.0.0-dev.77",
-    "@romcal/calendar.general-roman": "3.0.0-dev.77",
+    "@romcal/calendar.france": "3.0.0-dev.81",
+    "@romcal/calendar.general-roman": "3.0.0-dev.81",
     "fastify": "^4.28.0",
-    "romcal": "3.0.0-dev.77"
+    "romcal": "3.0.0-dev.81"
   },
   "license": "MIT",
   "devDependencies": {
-    "chai": "^5.1.0",
+    "chai": "^5.1.1",
     "chai-http": "^4.4.0",
     "cypress": "^13.8.1",
     "eslint": "^8.57.0",
