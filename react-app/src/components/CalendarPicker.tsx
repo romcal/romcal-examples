@@ -1,9 +1,9 @@
+import type React from 'react';
 import { Box, capitalize, FormControl, InputLabel, NativeSelect } from '@mui/material';
-import { observer } from 'mobx-react';
-import React, { useContext } from 'react';
+import { Romcal } from 'romcal';
+import { kebabCase } from 'lodash';
 
-import { AppContext } from '../AppContext';
-import { CALENDARS } from '../constants/calendars';
+import { useNavigateCalendar } from '../hooks/useNavigateCalendar.hook';
 
 const toHumanName = (str: string): string =>
   capitalize(
@@ -13,16 +13,12 @@ const toHumanName = (str: string): string =>
       .replace(/\s([a-z])/g, (c) => ` ${c.toUpperCase()}`)
   );
 
-const CalendarMenu = observer(() => {
-  const {
-    stores: {
-      romcalStore: { calendarId, setCalendarId },
-    },
-  } = useContext(AppContext);
+export const CalendarPicker = () => {
+  const { calendarKey, setCalendarKey } = useNavigateCalendar();
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     if (event.target.value) {
-      setCalendarId(event.target.value);
+      setCalendarKey(event.target.value);
     }
   };
 
@@ -32,16 +28,14 @@ const CalendarMenu = observer(() => {
         <InputLabel variant="standard" htmlFor="uncontrolled-native">
           Calendar
         </InputLabel>
-        <NativeSelect id="calendar" value={calendarId} onChange={handleChange}>
-          {Object.keys(CALENDARS).map((id) => (
-            <option key={id} value={id}>
-              {toHumanName(id)}
+        <NativeSelect id="calendar" value={calendarKey} onChange={handleChange}>
+          {Romcal.CALENDAR_VAR_NAMES.map((key) => (
+            <option key={key} value={key.split('_').map(kebabCase).join('_')}>
+              {toHumanName(key)}
             </option>
           ))}
         </NativeSelect>
       </FormControl>
     </Box>
   );
-});
-
-export default CalendarMenu;
+};

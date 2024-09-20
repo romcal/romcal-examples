@@ -1,14 +1,13 @@
-import { observer } from 'mobx-react';
 import React from 'react';
 
-import CalendarContent from './CalendarContent';
-import CalendarToolbar from './CalendarToolbar';
+import { CalendarContent } from './CalendarContent';
+import { CalendarToolbar } from './CalendarToolbar';
 
-export const Calendar = observer(() => {
+export const Calendar = () => {
   return (
     <>
       <CalendarToolbar />
       <CalendarContent />
     </>
   );
-});
+};

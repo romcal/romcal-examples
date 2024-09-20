@@ -13,6 +13,7 @@ rules:
   # typescript rules
   '@typescript-eslint/prefer-default-export': 'off'
   '@typescript-eslint/lines-between-class-members': 'off'
+  '@typescript-eslint/consistent-type-imports': 'error'
 
   # react rules
   'react/function-component-definition':
@@ -23,6 +24,7 @@ rules:
 
   # import rules
   'import/prefer-default-export': 'off'
+  'import/no-default-export': 'error'
   'import/no-extraneous-dependencies':
     - error
     - devDependencies:

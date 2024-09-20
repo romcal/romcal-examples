@@ -1,7 +1,7 @@
+import React from 'react';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import Button from '@mui/material/Button';
 import styled from '@mui/material/styles/styled';
-import React from 'react';
 
 const HeadlineContainer = styled('div')`
   font-family: 'Roboto', sans-serif;
@@ -23,7 +23,7 @@ const HeadlineFooter = styled('p')`
   padding-top: 10px;
 `;
 
-const Headline = () => (
+export const Headline = () => (
   <HeadlineContainer>
     <p>A JavaScript library that generates liturgical calendars of the Roman Rite of the Roman Catholic Church.</p>
     <HeadlineFooter>
@@ -33,5 +33,3 @@ const Headline = () => (
     </HeadlineFooter>
   </HeadlineContainer>
 );
-
-export default Headline;
