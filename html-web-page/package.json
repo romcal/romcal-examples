@@ -1,16 +1,17 @@
 {
   "name": "romcal-html-web-page-example",
   "scripts": {
-    "prestart": "cp node_modules/romcal/dist/iife/romcal.js public/romcal/romcal.js && cp node_modules/@romcal/calendar.france/iife/fr.js public/romcal/fr.js",
+    "prestart": "cp ../node_modules/romcal/rites/roman1969/dist/iife/romcal.js public/romcal/romcal.js && cp node_modules/@romcal/calendar.france/iife/fr.js public/romcal/fr.js",
     "start": "http-server -g -p ${ROMCAL_APP_PORT:-3000} ./public",
     "build": "exit 0",
-    "test:ui": "cypress run"
+    "test:ui": "cypress run",
+    "dev:link": "ROMCAL_ALIAS=\"../${ROMCAL_ALIAS:-romcal}\" bash ../scripts/link.sh"
   },
   "dependencies": {
-    "@romcal/calendar.france": "3.0.0-dev.81",
-    "@romcal/calendar.general-roman": "3.0.0-dev.81",
+    "@romcal/calendar.france": "3.0.0-dev.97",
+    "@romcal/calendar.general-roman": "3.0.0-dev.97",
     "http-server": "^14.1.1",
-    "romcal": "3.0.0-dev.81"
+    "romcal": "3.0.0-dev.97"
   },
   "license": "MIT",
   "devDependencies": {

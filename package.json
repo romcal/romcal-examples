@@ -1,0 +1,44 @@
+{
+  "name": "examples",
+  "version": "0.0.0-dev",
+  "description": "Examples repo",
+  "main": "package.json",
+  "scripts": {
+    "test": "exit 0",
+    "start": "tsx scripts/start.ts",
+    "build": "npm run build --workspaces"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romcal/romcal-examples.git"
+  },
+  "keywords": [
+    "examples",
+    "romcal",
+    "react",
+    "html",
+    "iife",
+    "rest-api"
+  ],
+  "author": "emangier",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/romcal/romcal-examples/issues"
+  },
+  "homepage": "https://github.com/romcal/romcal-examples#readme",
+  "workspaces": [
+    "html-web-page",
+    "react-app",
+    "rest-api-with-fastify",
+    "rest-api-with-express"
+  ],
+  "devDependencies": {
+    "@types/yargs": "^17.0.33",
+    "cli-select": "^1.1.2",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "yargs": "^17.7.2"
+  },
+  "type": "module"
+}

@@ -6,7 +6,7 @@ describe('Load', () => {
 
     cy.get('#calendar').find('div').should('have.length', 2).as('messages');
     cy.get('@messages').eq(0).should('have.text', 'All definitions, which are all possible liturgical days of a specific calendar, that can occur during a whole year:');
-    cy.get('@messages').eq(1).should('have.text', 'A calendar that contains all liturgical days occurring during 2024:');
+    cy.get('@messages').eq(1).should('have.text', `A calendar that contains all liturgical days occurring during ${new Date().getUTCFullYear()}:`);
 
     cy.get('#calendar').find('pre').should('have.length', 2).as('codes');
     cy.get('@codes').eq(0).should('include.text', 'mary_mother_of_god');

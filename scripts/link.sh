@@ -2,7 +2,7 @@
 
 CHECK="\e[32m🗸\e[0m"
 ROMCAL_PATH="../${ROMCAL_ALIAS:-'romcal'}"
-BUNDLE_ROOT="${ROMCAL_PATH}/dist/bundles"
+BUNDLE_ROOT="${ROMCAL_PATH}/rites/roman1969/dist/bundles"
 LOCALES=
 
 buildLocales () {
