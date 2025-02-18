@@ -20,7 +20,23 @@
     "iife",
     "rest-api"
   ],
-  "author": "emangier",
+  "author": {
+    "name": "Etienne Magnier",
+    "email": "etienne.magnier@gmail.com",
+    "url": "https://github.com/emagnier"
+  },
+  "contributors": [
+    {
+      "name": "Matej Voboril",
+      "email": "tobiah@pm.me",
+      "url": "https://github.com/TobiTenno"
+    },
+    {
+      "name": "Tukusej’s Sirs",
+      "email": "tukusejssirs@protonmail.com",
+      "url": "https://github.com/tukusejssirs"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/romcal/romcal-examples/issues"

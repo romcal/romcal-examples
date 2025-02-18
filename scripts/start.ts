@@ -15,7 +15,7 @@ const options = await (yargs(hideBin(process.argv)).usage('Usage -e <script_name
   demandOption: false
 }).argv);
 
-const { e  } = options;
+const { e } = options;
 let example = e;
 
 if (!example) {
