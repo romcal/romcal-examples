@@ -3,6 +3,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "dev:link": "ROMCAL_ALIAS=\"../${ROMCAL_ALIAS:-romcal}\" bash ../scripts/link.sh",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
     "test": "mocha",
@@ -10,10 +11,10 @@
     "build": "exit 0"
   },
   "dependencies": {
-    "@romcal/calendar.france": "3.0.0-dev.81",
-    "@romcal/calendar.general-roman": "3.0.0-dev.81",
+    "@romcal/calendar.france": "3.0.0-dev.97",
+    "@romcal/calendar.general-roman": "3.0.0-dev.97",
     "express": "^4.19.2",
-    "romcal": "3.0.0-dev.81"
+    "romcal": "3.0.0-dev.97"
   },
   "license": "MIT",
   "devDependencies": {

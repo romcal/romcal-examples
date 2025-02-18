@@ -3,9 +3,6 @@ on:
   pull_request:
     branches:
       - main
-  push:
-    branches-ignore:
-      - main
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -58,28 +55,36 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'npm'
           cache-dependency-path: ${{ matrix.project }}/package-lock.json
-      - name: Build for Cypress
+      - name: Run Cypress
         uses: cypress-io/github-action@v6
+        if: matrix.project != 'react-app'
         with:
           working-directory: ${{ matrix.project }}
           build: npm run build -- --logLevel error
-          runTests: false
+          browser: ${{ matrix.browser }}
+          start: npm start
       - name: Run Cypress
+        if: matrix.project == 'react-app'
         uses: cypress-io/github-action@v6
         with:
           working-directory: ${{ matrix.project }}
-          start: npm start
+          start: npm run serve
           browser: ${{ matrix.browser }}
-          install: false
+          install: true
+      - uses: actions/upload-artifact@master
+        if: always()
+        with:
+          name: ${{ matrix.project}}-cypress-report
+          path: ${{ matrix.project }}/${{ matrix.project }}-cypress-report.xml
       - uses: actions/upload-artifact@master
         if: failure()
         with:
-          name: screenshots
+          name: ${{ matrix.project }}-screenshots
           path: ${{ matrix.project }}/cypress/screenshots
       - uses: actions/upload-artifact@master
         if: failure()
         with:
-          name: videos
+          name: ${{ matrix.project }}-videos
           path: ${{ matrix.project }}/cypress/videos
   test-unit:
     name: Test (Unit)
@@ -102,10 +107,30 @@ jobs:
       - name: Install Dependencies
         run: npm ci
       - name: Run Unit Tests
-        run: npm test -- --reporter=xunit --reporter-options output=unit-tests.xml
-      - name: Report Results
-        uses: EnricoMi/publish-unit-test-result-action@v2
+        run: npm test -- --reporter=xunit --reporter-options output=${{matrix.project}}-unit-tests.xml
+      - name: Upload Test Results
         if: always()
+        uses: actions/upload-artifact@v4
         with:
-          files: |
-            ${{ matrix.project }}/unit-tests.xml
+          name: Test Results (${{matrix.project}})
+          path: ${{matrix.project}}/${{matrix.project}}-unit-tests.xml
+  publish-test-results:
+    name: "Publish Tests Results"
+    needs:
+      - test-unit
+      - test-ui
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+      pull-requests: write
+    if: always()
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        with:
+          files: "artifacts/**/*.xml"
