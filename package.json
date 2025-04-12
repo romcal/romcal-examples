@@ -2,11 +2,13 @@
   "name": "examples",
   "version": "0.0.0-dev",
   "description": "Examples repo",
-  "main": "package.json",
+  "main": "scripts/start.ts",
   "scripts": {
-    "test": "exit 0",
+    "test": "npm run test --workspaces --if-present",
     "start": "tsx scripts/start.ts",
-    "build": "npm run build --workspaces"
+    "build": "npm run build --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "prepare": "npx --yes update-browserslist-db@latest"
   },
   "repository": {
     "type": "git",
@@ -46,13 +48,14 @@
     "html-web-page",
     "react-app",
     "rest-api-with-fastify",
-    "rest-api-with-express"
+    "rest-api-with-express",
+    "node-console"
   ],
   "devDependencies": {
     "@types/yargs": "^17.0.33",
     "cli-select": "^1.1.2",
     "ts-node": "^10.9.2",
-    "tsx": "^4.19.2",
+    "tsx": "^4.19.3",
     "typescript": "^5.7.3",
     "yargs": "^17.7.2"
   },

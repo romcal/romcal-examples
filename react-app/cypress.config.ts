@@ -8,7 +8,7 @@ export default defineConfig({
   reporter: 'junit',
   reporterOptions: {
     mochaFile: 'react-app-cypress-report.xml',
-    toConsole: true,
+    toConsole: false,
   },
   e2e: {
     supportFile: false,

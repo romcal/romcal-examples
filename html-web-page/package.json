@@ -1,7 +1,7 @@
 {
   "name": "romcal-html-web-page-example",
   "scripts": {
-    "prestart": "cp ../node_modules/romcal/rites/roman1969/dist/iife/romcal.js public/romcal/romcal.js && cp node_modules/@romcal/calendar.france/iife/fr.js public/romcal/fr.js",
+    "prestart": "cp ../node_modules/romcal/rites/roman1969/dist/iife/romcal.js public/romcal/romcal.js && cp ../node_modules/@romcal/calendar.france/iife/fr.js public/romcal/fr.js",
     "start": "http-server -g -p ${ROMCAL_APP_PORT:-3000} ./public",
     "build": "exit 0",
     "test:ui": "cypress run",

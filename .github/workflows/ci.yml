@@ -28,7 +28,6 @@ jobs:
        with:
          node-version-file: '.nvmrc'
          cache: 'npm'
-         cache-dependency-path: ${{ matrix.project }}/package-lock.json
      - name: Install Dependencies
        run: npm ci
      - name: Run linters
@@ -54,7 +53,8 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
-          cache-dependency-path: ${{ matrix.project }}/package-lock.json
+      - name: Install Dependencies
+        run: npm ci
       - name: Run Cypress
         uses: cypress-io/github-action@v6
         if: matrix.project != 'react-app'
@@ -63,6 +63,7 @@ jobs:
           build: npm run build -- --logLevel error
           browser: ${{ matrix.browser }}
           start: npm start
+          install: false
       - name: Run Cypress
         if: matrix.project == 'react-app'
         uses: cypress-io/github-action@v6
@@ -70,7 +71,7 @@ jobs:
           working-directory: ${{ matrix.project }}
           start: npm run serve
           browser: ${{ matrix.browser }}
-          install: true
+          install: false
       - uses: actions/upload-artifact@master
         if: always()
         with:
@@ -103,7 +104,6 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
-          cache-dependency-path: ${{ matrix.project }}/package-lock.json
       - name: Install Dependencies
         run: npm ci
       - name: Run Unit Tests
