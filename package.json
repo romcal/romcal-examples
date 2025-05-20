@@ -6,9 +6,7 @@
   "scripts": {
     "test": "npm run test --workspaces --if-present",
     "start": "tsx scripts/start.ts",
-    "build": "npm run build --workspaces --if-present",
-    "lint": "npm run lint --workspaces --if-present",
-    "prepare": "npx --yes update-browserslist-db@latest"
+    "build": "npm run build --workspaces --if-present"
   },
   "repository": {
     "type": "git",
