@@ -11,24 +11,30 @@
     "build": "exit 0"
   },
   "dependencies": {
-    "@romcal/calendar.france": "3.0.0-dev.103",
-    "@romcal/calendar.general-roman": "3.0.0-dev.103",
-    "express": "^4.19.2",
-    "romcal": "3.0.0-dev.103"
+    "@romcal/calendar.france": "3.0.0-dev.105",
+    "@romcal/calendar.general-roman": "3.0.0-dev.105",
+    "express": "^5.1.0",
+    "romcal": "3.0.0-dev.105"
   },
   "license": "MIT",
   "devDependencies": {
-    "chai": "^4.4.1",
-    "chai-http": "^4.4.0",
-    "cypress": "^13.8.1",
-    "eslint": "^8.57.0",
+    "@babel/eslint-parser": "^7.27.1",
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.27.0",
+    "chai": "^5.2.0",
+    "chai-http": "^5.1.2",
+    "cypress": "^14.4.0",
+    "eslint": "^9.27.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-cypress": "^3.0.2",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-no-null": "^1.0.2",
-    "eslint-plugin-prettier": "^5.1.3",
-    "mocha": "^10.4.0",
-    "prettier": "^3.2.5"
-  }
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-cypress": "^4.3.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-mocha": "^11.0.0",
+    "eslint-plugin-prettier": "^5.4.0",
+    "eslint-plugin-unicorn": "^59.0.1",
+    "globals": "^16.1.0",
+    "mocha": "^11.4.0",
+    "prettier": "^3.5.3"
+  },
+  "type": "module"
 }

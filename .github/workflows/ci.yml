@@ -54,7 +54,7 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'npm'
       - name: Install Dependencies
-        run: npm ci
+        run: npm ci --no-audit -q
       - name: Run Cypress
         uses: cypress-io/github-action@v6
         env:

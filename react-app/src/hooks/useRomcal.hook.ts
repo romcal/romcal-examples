@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { type LiturgicalCalendar, Romcal, type LiturgicalDay, type BaseRomcalBundle } from 'romcal';
 import { camelCase, upperFirst } from 'lodash';
-import { CALENDARS } from 'src/constants/calendars';
+import { CALENDARS } from '../constants/calendars';
 import { useQuery } from '@tanstack/react-query';
 
 export type MonthlyData = Record<number, LiturgicalDay[][]>;

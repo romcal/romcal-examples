@@ -1,7 +1,7 @@
 import React from 'react';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import Button from '@mui/material/Button';
-import styled from '@mui/material/styles/styled';
+import { styled } from '@mui/material/styles';
 
 const HeadlineContainer = styled('div')`
   font-family: 'Roboto', sans-serif;
