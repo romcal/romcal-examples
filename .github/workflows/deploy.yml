@@ -1,4 +1,4 @@
-name: CI
+name: Deploy
 on:
   push:
     branches:
@@ -24,7 +24,6 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
-          cache-dependency-path: ${{ matrix.project }}/package-lock.json
       - name: Install Dependencies
         run: npm ci
       - name: Run linters
@@ -50,7 +49,9 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
-          cache-dependency-path: ${{ matrix.project }}/package-lock.json
+      - name: Install Dependencies
+        working-directory: "."
+        run: npm ci
       - name: Run Cypress
         uses: cypress-io/github-action@v6
         if: matrix.project != 'react-app'
@@ -59,6 +60,7 @@ jobs:
           build: npm run build -- --logLevel error
           browser: ${{ matrix.browser }}
           start: npm start
+          install: false
       - name: Run Cypress
         if: matrix.project == 'react-app'
         uses: cypress-io/github-action@v6
@@ -66,7 +68,7 @@ jobs:
           working-directory: ${{ matrix.project }}
           start: npm run serve
           browser: ${{ matrix.browser }}
-          install: true
+          install: false
       - uses: actions/upload-artifact@master
         if: failure()
         with:
@@ -94,7 +96,6 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
-          cache-dependency-path: ${{ matrix.project }}/package-lock.json
       - name: Install Dependencies
         run: npm ci
       - name: Run Unit Tests
@@ -121,26 +122,37 @@ jobs:
         if: ${{ (contains(needs.*.result, 'failure')) && (contains(needs.*.conclusion, 'cancelled')) && (contains(needs.*.conclusion, 'skipped')) }}
         run: exit 1
   # TODO: test publishing to another repo first
-  #publish:
-  #  name: Publish
-  #  runs-on: ubuntu-latest
-  #  if: github.repository == 'romcal/romcal-examples' && !contains(github.event.head_commit.message, '[skip ci]')
-  #  needs:
-  #    - verify
-  #  steps:
-  #    - name: Build React App
-  #      working-directory: react-app
-  #      run: VITE_DAY_VARIANT=developer npm run build
-  #    - name: Deploy
-  #      uses: peaceiris/actions-gh-pages@v4
-  #      with:
-  #        deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-  #        external_repository: romcal/romcal.github.io
-  #        publish_branch: gh-pages
-  #        publish_dir: ./build
-  #        cname: romcal.js.org
-  #        commit_message: ${{ github.event.head_commit.message }}
-  #        force_orphan: true
-  #        user_name: 'romcalproject'
-  #        user_email: 'romcalproject@gmail.com'
-
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    if: github.repository == 'romcal/romcal-examples' && !contains(github.event.head_commit.message, '[skip ci]')
+    needs:
+      - verify
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+      - name: Install Dependencies
+        run: npm ci
+      - name: Build React App
+        working-directory: react-app
+        run: VITE_DAY_VARIANT=developer npm run build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          working-directory: react-app
+          deploy_key: ${{ secrets.DEPLOY_TOKEN }}
+          external_repository: romcal/romcal.github.io
+          publish_branch: gh-pages
+          publish_dir: ./build
+          cname: romcal.js.org
+          commit_message: ${{ github.event.head_commit.message }}
+          force_orphan: true
+          user_name: 'romcalproject'
+          user_email: 'romcalproject@gmail.com'

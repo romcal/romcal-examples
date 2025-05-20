@@ -1,26 +1,32 @@
 {
-  "name": "my-app-using-romcal",
-  "version": "0.1.0",
-  "private": true,
-  "type": "module",
+  "name": "romcal-console",
+  "version": "0.0.0-dev",
+  "description": "romcal plain ts examples for minimal overhead",
+  "main": "index.ts",
   "scripts": {
-    "build": "tsc && NODE_NO_WARNINGS=1 vite build",
-    "build:dev": "NODE_OPTIONS='--max-old-space-size=8192' VITE_DAY_VARIANT=developer npm run build",
+    "test": "npm start",
     "dev:link": "ROMCAL_ALIAS=\"../${ROMCAL_ALIAS:-romcal}\" bash ../scripts/link.sh",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
-    "serve": "NODE_NO_WARNINGS=1 vite",
-    "serve:dev": "VITE_DAY_VARIANT=developer npm run serve",
-    "start": "NODE_NO_WARNINGS=1 npx http-server build -p ${ROMCAL_APP_PORT:-3000} -g -s",
-    "test": "NODE_NO_WARNINGS=1 npx cypress run"
+    "start": "tsx index.ts"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romcal/romcal-examples.git"
+  },
+  "keywords": [
+    "console",
+    "romcal",
+    "roman",
+    "calendar"
+  ],
+  "author": "TobiTenno",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/romcal/romcal-examples/issues"
+  },
+  "homepage": "https://github.com/romcal/romcal-examples#readme",
   "dependencies": {
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
-    "@microlink/react-json-view": "^1.26.1",
-    "@mui/icons-material": "^6.1.1",
-    "@mui/material": "^6.1.1",
-    "@mui/x-date-pickers": "^7.28.3",
     "@romcal/calendar.americas": "3.0.0-dev.103",
     "@romcal/calendar.argentina": "3.0.0-dev.103",
     "@romcal/calendar.australia": "3.0.0-dev.103",
@@ -83,57 +89,16 @@
     "@romcal/calendar.venezuela": "3.0.0-dev.103",
     "@romcal/calendar.vietnam": "3.0.0-dev.103",
     "@romcal/calendar.wales": "3.0.0-dev.103",
-    "@tanstack/react-query": "^5.72.2",
-    "classnames": "^2.5.1",
-    "date-fns": "^4.1.0",
-    "flatted": "^3.3.3",
-    "lodash": "^4.17.21",
-    "nanoid": "^5.1.5",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.26.2",
+    "chalk": "^5.4.1",
     "romcal": "3.0.0-dev.103"
   },
   "devDependencies": {
-    "@babel/plugin-transform-class-properties": "^7.25.9",
-    "@babel/plugin-transform-nullish-coalescing-operator": "^7.26.6",
-    "@babel/plugin-transform-numeric-separator": "^7.25.9",
-    "@babel/plugin-transform-optional-chaining": "^7.25.9",
-    "@babel/plugin-transform-private-methods": "^7.25.9",
-    "@types/lodash": "^4.17.16",
-    "@types/node": "^22.14.1",
-    "@types/react": "^18.3.8",
-    "@types/react-dom": "^18.3.0",
-    "@typescript-eslint/eslint-plugin": "^7.14.1",
-    "@typescript-eslint/parser": "^7.14.1",
-    "@vitejs/plugin-react": "^4.3.4",
-    "cypress": "^14.3.0",
-    "cypress-vite": "^1.6.0",
-    "eslint": "^8.57.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-airbnb-typescript": "^18.0.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-cypress": "^3.3.0",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "@eslint/js": "^9.24.0",
+    "eslint": "^9.24.0",
     "eslint-plugin-prettier": "^5.2.6",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^4.6.2",
     "prettier": "^3.5.3",
     "typescript": "^5.8.3",
-    "vite": "^5.4.6",
-    "vite-plugin-eslint": "^1.8.1",
-    "vite-tsconfig-paths": "^5.1.4"
+    "typescript-eslint": "^8.29.1"
   },
-  "overrides": {
-    "html-entities": "^2.5.2",
-    "@babel/plugin-proposal-private-methods": "@babel/plugin-transform-private-methods",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "@babel/plugin-transform-nullish-coalescing-operator",
-    "@babel/plugin-proposal-optional-chaining": "@babel/plugin-transform-optional-chaining",
-    "@babel/plugin-proposal-numeric-separator": "@babel/plugin-transform-numeric-separator",
-    "@babel/plugin-proposal-class-properties": "@babel/plugin-transform-class-properties",
-    "flux": {
-      "react": "^18.0.0"
-    }
-  }
+  "type": "module"
 }
