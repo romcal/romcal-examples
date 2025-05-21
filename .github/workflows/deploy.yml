@@ -142,7 +142,7 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.DEPLOY_TOKEN }}
+          personal_token: ${{ secrets.DEPLOY_TOKEN }}
           external_repository: romcal/romcal.github.io
           publish_branch: gh-pages
           publish_dir: ./react-app/build
