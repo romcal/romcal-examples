@@ -1,5 +1,5 @@
 import React, { type FC, useMemo } from 'react';
-import { Box, Grid, Tooltip, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { Grid, Box, Tooltip, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
 import { format } from 'date-fns';
@@ -24,6 +24,7 @@ export type DayProps = {
 
 const DayContainer = styled(Grid)`
   margin: 15px 0;
+  gap: 8px;
 `;
 
 const MonthTitle = styled('h4')`
@@ -39,6 +40,7 @@ const DayNumber = styled('h4')`
   line-height: 30px;
   text-align: right;
   width: 30px;
+  padding-right: 30px;
   margin: 0;
 `;
 
@@ -95,19 +97,22 @@ const SimpleDay: FC<SimpleDayProps> = ({ date, liturgicalDay, variant }) => {
   return (
     <DayContainer
       container
+      sx={{
+        flexGrow: '1',
+      }}
       direction="row"
       justifyContent="flex-start"
       alignItems="flex-start"
       className={classNames([...simpleClasses, `${variant}-day`])}
     >
-      <Grid item xs={1}>
+      <Grid size={{ xs: 1 }}>
         <Box>
           <Tooltip placement="top-start" title={format(date, 'EEEE')}>
             <DayNumber>{utcDate}</DayNumber>
           </Tooltip>
         </Box>
       </Grid>
-      <Grid item xs>
+      <Grid size="grow">
         <Box>
           <MainTitle className={liturgicalDay[0].rank.toLowerCase()}>{liturgicalDay[0].name}</MainTitle>
           <AdditionalLineContent day={liturgicalDay[0]} />
@@ -146,7 +151,7 @@ export const Day: FC<DayProps> = ({ liturgicalDay, variant }) => {
         {separator}
         <Accordion
           className={classNames([`dow-${utcDay}`, `date-in-month-${utcDate}`, `miy-${utcMonth}`, `${variant}-day`])}
-          TransitionProps={{ unmountOnExit: true }}
+          slotProps={{ transition: { unmountOnExit: true } }}
         >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}

@@ -1,13 +1,19 @@
-const express = require('express');
-const { Romcal } = require('romcal');
-const { France_Fr: FranceFR } = require('@romcal/calendar.france');
-const Roman = require('@romcal/calendar.general-roman');
+import express from 'express';
+import { Romcal } from 'romcal';
+import { France_Fr as FranceFR } from '@romcal/calendar.france';
+import * as Roman from '@romcal/calendar.general-roman';
+import { fileURLToPath } from 'url';
+import { dirname } from 'node:path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 /**
  * Initialize the Express.js server.
  * @type {*|Express}
  */
 const app = express();
+export default app;
 
 /**
  * Wire an index HTML page to the URL root of this server.
@@ -20,7 +26,7 @@ app.get('/', (req, res) => {
  * Example that output data of the General Roman calendar, and all its defined locales.
  * The year is optional (taking the current year by default).
  */
-app.get('/romcal/general-roman/:locale/:year?', async (req, res) => {
+app.get('/romcal/general-roman/:locale/{:year}', async (req, res) => {
   const locale = req.params.locale.toLowerCase();
   const localeIndex = Romcal.LOCALE_IDS.indexOf(locale);
 
@@ -56,7 +62,7 @@ app.get('/romcal/general-roman/:locale/:year?', async (req, res) => {
  * the calendar of France and the `fr` locale.
  */
 const romcalFranceFr = new Romcal({ localizedCalendar: FranceFR });
-app.get('/romcal/france/fr/:year?', async (req, res) => {
+app.get('/romcal/france/fr/{:year}', async (req, res) => {
   const { year } = req.params;
   try {
     const data = await romcalFranceFr.generateCalendar(year);
@@ -67,5 +73,3 @@ app.get('/romcal/france/fr/:year?', async (req, res) => {
     res.status(code).send({ code, message: e.message });
   }
 });
-
-module.exports = app;

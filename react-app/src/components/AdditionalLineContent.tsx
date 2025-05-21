@@ -1,6 +1,6 @@
 import React from 'react';
-import capitalize from '@mui/material/utils/capitalize';
-import styled from '@mui/material/styles/styled';
+import { unstable_capitalize as capitalize } from '@mui/utils';
+import { styled } from '@mui/material/styles';
 import type { BaseLiturgicalDay } from 'romcal';
 
 import { Colors } from './Colors';

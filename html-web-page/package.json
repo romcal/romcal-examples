@@ -8,13 +8,13 @@
     "dev:link": "ROMCAL_ALIAS=\"../${ROMCAL_ALIAS:-romcal}\" bash ../scripts/link.sh"
   },
   "dependencies": {
-    "@romcal/calendar.france": "3.0.0-dev.97",
-    "@romcal/calendar.general-roman": "3.0.0-dev.97",
+    "@romcal/calendar.france": "3.0.0-dev.105",
+    "@romcal/calendar.general-roman": "3.0.0-dev.105",
     "http-server": "^14.1.1",
-    "romcal": "3.0.0-dev.97"
+    "romcal": "3.0.0-dev.105"
   },
   "license": "MIT",
   "devDependencies": {
-    "cypress": "^13.14.2"
+    "cypress": "^14.3.3"
   }
 }

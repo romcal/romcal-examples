@@ -1,4 +1,3 @@
-/* eslint-disable import/no-default-export */
 import { execSync } from 'node:child_process';
 
 import { defineConfig } from 'vite';
@@ -12,7 +11,7 @@ function getCommitHash() {
   try {
     const hash = execSync('git rev-parse --short HEAD').toString().trim();
     return /^[\da-f]{7}$/.test(hash) ? hash : 'unknown';
-  } catch (error) {
+  } catch (/* eslint-disable-line @typescript-eslint/no-unused-vars */ error) {
     return 'unknown';
   }
 }
@@ -22,9 +21,11 @@ export default defineConfig({
   plugins: [
     react(),
     viteTsconfigPaths(),
+    // disabled until airbnb publishes a v9 compatible
     eslint({
       fix: true,
       lintOnStart: false,
+      exclude: ['/virtual:/', '/node_modules/**'],
     }),
   ],
   server: {

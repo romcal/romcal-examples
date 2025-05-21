@@ -13,7 +13,11 @@ let server;
 
 before(async () => {
   const init = await fastify.listen({ port });
-  server = await request(init);
+  server = await request.agent(init);
+});
+
+after(() => {
+  server.close();
 });
 
 describe('GET /romcal/general-roman/:locale/:year?', () => {

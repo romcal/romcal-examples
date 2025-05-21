@@ -54,20 +54,14 @@ jobs:
         run: npm ci
       - name: Run Cypress
         uses: cypress-io/github-action@v6
-        if: matrix.project != 'react-app'
+        env:
+          NODE_OPTIONS: '--max-old-space-size=8192'
+          VITE_DAY_VARIANT: 'developer'
         with:
           working-directory: ${{ matrix.project }}
           build: npm run build -- --logLevel error
           browser: ${{ matrix.browser }}
           start: npm start
-          install: false
-      - name: Run Cypress
-        if: matrix.project == 'react-app'
-        uses: cypress-io/github-action@v6
-        with:
-          working-directory: ${{ matrix.project }}
-          start: npm run serve
-          browser: ${{ matrix.browser }}
           install: false
       - uses: actions/upload-artifact@master
         if: failure()
@@ -142,7 +136,10 @@ jobs:
         run: npm ci
       - name: Build React App
         working-directory: react-app
-        run: VITE_DAY_VARIANT=developer npm run build
+        env:
+          VITE_DAY_VARIANT: 'developer'
+          NODE_OPTIONS: '--max-old-space-size=8192'
+        run: npm run build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
