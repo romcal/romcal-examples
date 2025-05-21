@@ -142,11 +142,10 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
-          working-directory: react-app
-          deploy_key: ${{ secrets.DEPLOY_TOKEN }}
+          github_token: ${{ secrets.DEPLOY_TOKEN }}
           external_repository: romcal/romcal.github.io
           publish_branch: gh-pages
-          publish_dir: ./build
+          publish_dir: ./react-app/build
           cname: romcal.js.org
           commit_message: ${{ github.event.head_commit.message }}
           force_orphan: true
