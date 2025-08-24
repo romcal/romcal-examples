@@ -15,10 +15,10 @@
     "build": "exit 0"
   },
   "dependencies": {
-    "@romcal/calendar.france": "3.0.0-dev.105",
-    "@romcal/calendar.general-roman": "3.0.0-dev.105",
+    "@romcal/calendar.france": "3.0.0-dev.112",
+    "@romcal/calendar.general-roman": "3.0.0-dev.112",
     "fastify": "^5.3.3",
-    "romcal": "3.0.0-dev.105"
+    "romcal": "3.0.0-dev.112"
   },
   "license": "MIT",
   "devDependencies": {

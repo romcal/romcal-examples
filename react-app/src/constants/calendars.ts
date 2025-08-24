@@ -2,7 +2,9 @@ import type { RomcalBundleObject } from 'romcal';
 
 export const CALENDARS = {
   GeneralRoman: () => import('@romcal/calendar.general-roman'),
+  Africa: () => import('@romcal/calendar.africa'),
   Americas: () => import('@romcal/calendar.americas'),
+  Asia: () => import('@romcal/calendar.asia'),
   Argentina: () => import('@romcal/calendar.argentina'),
   Australia: () => import('@romcal/calendar.australia'),
   Austria: () => import('@romcal/calendar.austria'),
@@ -26,6 +28,7 @@ export const CALENDARS = {
   France_Paris: () => import('@romcal/calendar.france.paris'),
   France_SaintDenis: () => import('@romcal/calendar.france.saint-denis'),
   France_Strasbourg: () => import('@romcal/calendar.france.strasbourg'),
+  France_Toulouse: () => import('@romcal/calendar.france.toulouse'),
   Germany: () => import('@romcal/calendar.germany'),
   Greece: () => import('@romcal/calendar.greece'),
   Guatemala: () => import('@romcal/calendar.guatemala'),
@@ -50,6 +53,8 @@ export const CALENDARS = {
   PuertoRico: () => import('@romcal/calendar.puerto-rico'),
   Romania: () => import('@romcal/calendar.romania'),
   Russia: () => import('@romcal/calendar.russia'),
+  RussianAsia: () => import('@romcal/calendar.asian-russia'),
+  RussianEurope: () => import('@romcal/calendar.european-russia'),
   Scotland: () => import('@romcal/calendar.scotland'),
   Slovakia: () => import('@romcal/calendar.slovakia'),
   Slovenia: () => import('@romcal/calendar.slovenia'),

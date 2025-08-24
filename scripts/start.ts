@@ -2,18 +2,18 @@
 
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
-import { exec } from 'child_process';
+import { exec } from 'node:child_process';
 import cliSelect from 'cli-select';
 
 const choices = ['html-web-page', 'react-app', 'rest-api-with-express', 'rest-api-with-fastify', 'node-console'];
 
-const options = await (yargs(hideBin(process.argv)).usage('Usage -e <script_name>').option('e', {
+const options = await yargs(hideBin(process.argv)).usage('Usage -e <script_name>').option('e', {
   alias: 'example',
   describe: 'Example to run',
   type: 'string',
   choices,
-  demandOption: false
-}).argv);
+  demandOption: false,
+}).argv;
 
 const { e } = options;
 let example = e;
@@ -34,7 +34,7 @@ switch (example) {
 }
 
 console.log(`Running ${example}`);
-exec(command, {encoding: 'ascii', env: { ...process.env, FORCE_COLOR: '1' }}, (error, stdout, stderr) => {
+exec(command, { encoding: 'ascii', env: { ...process.env, FORCE_COLOR: '1' } }, (error, stdout, stderr) => {
   if (error) {
     console.error(`exec error: ${error}`);
     return;
