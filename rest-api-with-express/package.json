@@ -11,10 +11,10 @@
     "build": "exit 0"
   },
   "dependencies": {
-    "@romcal/calendar.france": "3.0.0-dev.112",
-    "@romcal/calendar.general-roman": "3.0.0-dev.112",
+    "@romcal/calendar.france": "3.0.0-dev.116",
+    "@romcal/calendar.general-roman": "3.0.0-dev.116",
     "express": "^5.1.0",
-    "romcal": "3.0.0-dev.112"
+    "romcal": "3.0.0-dev.116"
   },
   "license": "MIT",
   "devDependencies": {
