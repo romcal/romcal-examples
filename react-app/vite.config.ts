@@ -21,7 +21,6 @@ export default defineConfig({
   plugins: [
     react(),
     viteTsconfigPaths(),
-    // disabled until airbnb publishes a v9 compatible
     eslint({
       fix: true,
       lintOnStart: false,
