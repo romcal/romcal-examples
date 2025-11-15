@@ -1,6 +1,6 @@
 import { execSync } from 'node:child_process';
 
-import { defineConfig } from 'vite';
+import { defineConfig, PluginOption } from 'vite';
 import react from '@vitejs/plugin-react';
 import viteTsconfigPaths from 'vite-tsconfig-paths';
 import eslint from 'vite-plugin-eslint';
@@ -20,12 +20,12 @@ function getCommitHash() {
 export default defineConfig({
   plugins: [
     react(),
-    viteTsconfigPaths(),
+    viteTsconfigPaths() as PluginOption,
     eslint({
       fix: true,
       lintOnStart: false,
       exclude: ['/virtual:/', '/node_modules/**'],
-    }),
+    }) as PluginOption,
   ],
   server: {
     port,
