@@ -97,7 +97,7 @@
     "nanoid": "^5.1.6",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-router-dom": "^6.26.2",
+    "react-router": "^7.9.6",
     "romcal": "3.0.0-dev.116"
   },
   "devDependencies": {
