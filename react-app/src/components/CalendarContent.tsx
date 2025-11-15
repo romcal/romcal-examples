@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { styled } from '@mui/material/styles';
 
 import { useRomcal } from '../hooks/useRomcal.hook';

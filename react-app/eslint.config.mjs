@@ -13,6 +13,11 @@ export default tseslint.config(
   eslint.configs.recommended,
   {
     ignores: ['dist/', 'build/'],
+    settings: {
+      react: {
+        version: '19',
+      },
+    },
   },
   {
     files: ['**/*.{ts,tsx}'],
@@ -21,7 +26,8 @@ export default tseslint.config(
   tseslint.configs.recommended,
   jsxA11y.flatConfigs.recommended,
   react.configs.flat.recommended,
-  reactHooks.configs['recommended-latest'],
+  react.configs.flat['jsx-runtime'],
+  reactHooks.configs.flat['recommended-latest'],
   pluginCypress.configs.recommended,
   eslintPluginPrettier
 );

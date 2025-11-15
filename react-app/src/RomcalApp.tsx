@@ -1,4 +1,4 @@
-import React, { type FC } from 'react';
+import { type FC } from 'react';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { Container, createTheme, ThemeProvider } from '@mui/material';
 import { styled } from '@mui/material/styles';

@@ -2,17 +2,6 @@
   "name": "examples",
   "version": "0.0.0-dev",
   "description": "Examples repo",
-  "main": "scripts/start.ts",
-  "scripts": {
-    "test": "npm run test --workspaces --if-present",
-    "start": "tsx scripts/start.ts",
-    "build": "npm run build --workspaces --if-present",
-    "clean": "npx rimraf ./**/{build,coverage,dist,node_modules,out}"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/romcal/romcal-examples.git"
-  },
   "keywords": [
     "examples",
     "romcal",
@@ -21,6 +10,15 @@
     "iife",
     "rest-api"
   ],
+  "homepage": "https://github.com/romcal/romcal-examples#readme",
+  "bugs": {
+    "url": "https://github.com/romcal/romcal-examples/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romcal/romcal-examples.git"
+  },
+  "license": "MIT",
   "author": {
     "name": "Etienne Magnier",
     "email": "etienne.magnier@gmail.com",
@@ -38,11 +36,8 @@
       "url": "https://github.com/tukusejssirs"
     }
   ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/romcal/romcal-examples/issues"
-  },
-  "homepage": "https://github.com/romcal/romcal-examples#readme",
+  "type": "module",
+  "main": "scripts/start.ts",
   "workspaces": [
     "html-web-page",
     "react-app",
@@ -50,12 +45,19 @@
     "rest-api-with-express",
     "node-console"
   ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "clean": "npx rimraf node_modules ./**/{build,coverage,dist,node_modules,out}",
+    "prepare": "npx husky",
+    "start": "tsx scripts/start.ts",
+    "test": "npm run test --workspaces --if-present"
+  },
   "devDependencies": {
     "@types/yargs": "^17.0.35",
     "cli-select": "^1.1.2",
+    "husky": "^9.1.7",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
     "yargs": "^18.0.0"
-  },
-  "type": "module"
+  }
 }

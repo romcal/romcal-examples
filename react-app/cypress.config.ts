@@ -1,7 +1,8 @@
 import { defineConfig } from 'cypress';
-import vitePreprocessor from 'cypress-vite';
+import { getVitePrebuilder } from 'cypress-vite';
 
 const port = Number.parseInt(process.env.ROMCAL_APP_PORT ?? '3000', 10);
+const { vitePrebuild, vitePreprocessor } = getVitePrebuilder();
 
 export default defineConfig({
   reporter: 'junit',
@@ -12,8 +13,9 @@ export default defineConfig({
   e2e: {
     supportFile: false,
     baseUrl: `http://localhost:${port}`,
-    setupNodeEvents(on) {
-      on('file:preprocessor', vitePreprocessor('./vite.config.ts'));
+    setupNodeEvents(on, config) {
+      on('before:run', (details) => vitePrebuild(details, config));
+      on('file:preprocessor', vitePreprocessor);
     },
     env: {
       ROMCAL_APP_PORT: port,
