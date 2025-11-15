@@ -7,7 +7,7 @@
     "test": "npm run test --workspaces --if-present",
     "start": "tsx scripts/start.ts",
     "build": "npm run build --workspaces --if-present",
-    "clean": "rm -rf node_modules ./**/node_modules ./**/dist ./**/build ./**/out ./**/coverage"
+    "clean": "rm -rf ./**/{build,coverage,dist,node_modules,out}
   },
   "repository": {
     "type": "git",
