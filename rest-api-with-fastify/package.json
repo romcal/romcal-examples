@@ -15,10 +15,10 @@
     "build": "exit 0"
   },
   "dependencies": {
-    "@romcal/calendar.france": "3.0.0-dev.112",
-    "@romcal/calendar.general-roman": "3.0.0-dev.112",
+    "@romcal/calendar.france": "3.0.0-dev.116",
+    "@romcal/calendar.general-roman": "3.0.0-dev.116",
     "fastify": "^5.3.3",
-    "romcal": "3.0.0-dev.112"
+    "romcal": "3.0.0-dev.116"
   },
   "license": "MIT",
   "devDependencies": {
@@ -26,7 +26,7 @@
     "@eslint/js": "^9.27.0",
     "chai": "^5.2.0",
     "chai-http": "^5.1.2",
-    "cypress": "^14.4.0",
+    "cypress": "^15.6.0",
     "eslint": "^9.27.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^10.1.5",

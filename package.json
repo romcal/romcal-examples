@@ -6,7 +6,8 @@
   "scripts": {
     "test": "npm run test --workspaces --if-present",
     "start": "tsx scripts/start.ts",
-    "build": "npm run build --workspaces --if-present"
+    "build": "npm run build --workspaces --if-present",
+    "clean": "npx rimraf ./**/{build,coverage,dist,node_modules,out}"
   },
   "repository": {
     "type": "git",
