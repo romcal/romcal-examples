@@ -1,0 +1,8 @@
+'*.tsx?':
+  - eslint --fix
+  - npx --yes prettier --write
+'*.{json,yaml,yml,md,html,css,scss}':
+  - npx --yes prettier --write
+package*.json:
+  - npx sort-package-json
+  - npx --yes prettier --write

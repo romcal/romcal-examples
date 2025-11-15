@@ -1,4 +1,4 @@
-import React, { type FC } from 'react';
+import { type FC } from 'react';
 import { nanoid } from 'nanoid';
 import { capitalize } from '@mui/material';
 import type { Color } from 'romcal';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { unstable_capitalize as capitalize } from '@mui/utils';
 import { styled } from '@mui/material/styles';
 import type { BaseLiturgicalDay } from 'romcal';
